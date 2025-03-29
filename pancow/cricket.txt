@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cricket Updates - Pancow Supermarket</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 1rem 0;
+            text-align: center;
+        }
+        .container {
+            width: 90%;
+            margin: 2rem auto;
+            background-color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        h2 {
+            margin-top: 2rem;
+            color: #333;
+        }
+        .match, .news-item {
+            background-color: #fff;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        }
+        .match h3, .news-item h3 {
+            color: #333;
+        }
+        .match p, .news-item p {
+            color: #777;
+        }
+        .match .date {
+            font-weight: bold;
+            color: #333;
+        }
+        .btn {
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            color: white;
+            background-color: #4CAF50;
+            margin-top: 1rem;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Cricket Updates</h1>
+    <p>Stay updated with the latest cricket matches and news!</p>
+</header>
+
+<div class="container">
+    <section>
+        <h2>Upcoming Matches</h2>
+
+        <div class="match">
+            <h3>India vs Australia</h3>
+            <p class="date">Date: 30th March 2025</p>
+            <p>Venue: Melbourne Cricket Ground</p>
+            <button class="btn">View Details</button>
+        </div>
+        <div class="match">
+            <h3>England vs New Zealand</h3>
+            <p class="date">Date: 1st April 2025</p>
+            <p>Venue: Lord's Cricket Ground</p>
+            <button class="btn">View Details</button>
+        </div>
+        <div class="match">
+            <h3>Pakistan vs South Africa</h3>
+            <p class="date">Date: 5th April 2025</p>
+            <p>Venue: Sharjah Cricket Stadium</p>
+            <button class="btn">View Details</button>
+        </div>
+    </section>
+
+    <section>
+        <h2>Latest Cricket News</h2>
+
+        <div class="news-item">
+            <h3>ICC announces the schedule for the 2025 World Cup</h3>
+            <p>The International Cricket Council (ICC) has released the schedule for the 2025 World Cup, set to take place in India. The tournament will feature 10 teams competing across 13 cities.</p>
+            <button class="btn">Read More</button>
+        </div>
+        <div class="news-item">
+            <h3>Rohit Sharma becomes the highest run-scorer in T20I</h3>
+            <p>Indian cricketer Rohit Sharma has set a new record for the most runs in T20 international cricket, surpassing the previous record held by Virat Kohli.</p>
+            <button class="btn">Read More</button>
+        </div>
+        <div class="news-item">
+            <h3>Ben Stokes announces his retirement from Test cricket</h3>
+            <p>England's star all-rounder Ben Stokes has announced his retirement from Test cricket, citing personal reasons. His decision has left the cricket world in shock.</p>
+            <button class="btn">Read More</button>
+        </div>
+    </section>
+</div>
+
+</body>
+</html>

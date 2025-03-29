@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Downloads - HOVE Supermarket</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f7f7f7;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 1.5rem 0;
+        }
+        .container {
+            width: 90%;
+            margin: 2rem auto;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        .movie-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        .movie {
+            flex: 1 1 calc(25% - 1rem);
+            background-color: white;
+            padding: 1rem;
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .movie img {
+            width: 200px;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+        .movie h3 {
+            margin-top: 0.5rem;
+            color: #333;
+        }
+        .movie p {
+            color: #777;
+        }
+        .btn {
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            color: white;
+            background-color: #4CAF50;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Movie Downloads</h1>
+    <p>Download your favorite movies legally from our collection.</p>
+</header>
+
+<div class="container">
+    <section class="movie-grid">
+        <div class="movie">
+            <img src="movie1.jpg" alt="Movie 1">
+            <h3>Movie Title 1</h3>
+            <p>Duration: 1hr 30min</p>
+            <a href="https://yourdomain.com/movies/movie1.mp4" class="btn" download>Download</a>
+        </div>
+        <div class="movie">
+            <img src="movie2.jpg" alt="Movie 2">
+            <h3>Movie Title 2</h3>
+            <p>Duration: 2hr</p>
+            <a href="https://yourdomain.com/movies/movie2.mp4" class="btn" download>Download</a>
+        </div>
+        <div class="movie">
+            <img src="movie3.jpg" alt="Movie 3">
+            <h3>Movie Title 3</h3>
+            <p>Duration: 1hr 45min</p>
+            <a href="https://yourdomain.com/movies/movie3.mp4" class="btn" download>Download</a>
+        </div>
+        <div class="movie">
+            <img src="movie4.jpg" alt="Movie 4">
+            <h3>Movie Title 4</h3>
+            <p>Duration: 2hr 15min</p>
+            <a href="https://yourdomain.com/movies/movie4.mp4" class="btn" download>Download</a>
+        </div>
+    </section>
+</div>
+
+</body>
+</html>

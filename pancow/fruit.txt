@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fruits and Vegetables - Pancow market
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f7f7f7;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 1.5rem 0;
+        }
+        .container {
+            width: 90%;
+            margin: 2rem auto;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        .products-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        .product {
+            flex: 1 1 calc(25% - 1rem);
+            background-color: white;
+            padding: 1rem;
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .product img {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+        .product h3 {
+            margin-top: 0.5rem;
+            color: #333;
+        }
+        .product p {
+            color: #777;
+        }
+        .product-actions {
+            margin-top: 1rem;
+            display: flex;
+            gap: 0.5rem;
+            justify-content: center;
+        }
+        .btn {
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            color: white;
+        }
+        .add-to-cart {
+            background-color: #4CAF50;
+        }
+        .buy-now {
+            background-color: #FF5733;
+        }
+        .view-cart {
+            display: block;
+            width: max-content;
+            margin: 2rem auto;
+            padding: 0.7rem 1.5rem;
+            background-color: #333;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Fruits and Vegetables</h1>
+    <p>Discover our fresh selection of fruits and vegetables at HOVE Supermarket.</p>
+</header>
+
+<div class="container">
+    <section class="products-grid">
+        <div class="product">
+            <img src="apple.jpeg" alt="Apples">
+            <h3>Fresh Apples</h3>
+            <p>Rs.250 / lb</p>
+            <div class="product-actions">
+                <button class="btn add-to-cart" onclick="addToCart('Fresh Apples')">Add to Cart</button>
+                <button class="btn buy-now" onclick="buyNow('Fresh Apples')">Buy Now</button>
+            </div>
+        </div>
+        <div class="product">
+            <img src="banana.jpeg" alt="Bananas">
+            <h3>Organic Bananas</h3>
+            <p>Rs.100/ lb</p>
+            <div class="product-actions">
+                <button class="btn add-to-cart" onclick="addToCart('Organic Bananas')">Add to Cart</button>
+                <button class="btn buy-now" onclick="buyNow('Organic Bananas')">Buy Now</button>
+            </div>
+        </div>
+        <div class="product">
+            <img src="carrot.jpeg" alt="Carrots">
+            <h3>Carrots</h3>
+            <p>Rs.120 / lb</p>
+            <div class="product-actions">
+                <button class="btn add-to-cart" onclick="addToCart('Carrots')">Add to Cart</button>
+                <button class="btn buy-now" onclick="buyNow('Carrots')">Buy Now</button>
+            </div>
+        </div>
+    </section>
+</div>
+
+<a href="cart.html" style="text-decoration: none; color: white; font-weight: bold; background: #333; padding: 10px 20px; border-radius: 5px; display: inline-block;">🛒 View Cart</a>
+
+<script>
+    function addToCart(productName, productPrice, productImage) {
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        
+        // Check if product is already in cart
+        let existingProduct = cart.find(item => item.name === productName);
+        if (existingProduct) {
+            existingProduct.quantity++;
+        } else {
+            cart.push({ name: productName, price: productPrice, quantity: 1, image: productImage });
+        }
+
+        localStorage.setItem('cart', JSON.stringify(cart));
+        alert(productName + " has been added to your cart.");
+    }
+
+    function buyNow(productName, productPrice) {
+        alert("You are buying " + productName + " now.");
+        window.location.href = "cart.html";
+    }
+</script>
+<a href="index.html" style="text-decoration: none; color: green; font-weight: bold; background: #333; padding: 10px 20px; border-radius: 5px; display: inline-block;">🛒 Back to home page</a>
+
+</body>
+</html>

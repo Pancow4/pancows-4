@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart - HOVE Supermarket</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f7f7f7;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 1.5rem 0;
+        }
+        .container {
+            width: 90%;
+            margin: 2rem auto;
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 1rem;
+            text-align: center;
+        }
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+        img {
+            width: 50px;
+            height: 50px;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+        .btn {
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            color: white;
+            margin: 0.5rem;
+        }
+        .remove-btn {
+            background-color: #FF5733;
+        }
+        .clear-cart {
+            background-color: #d9534f;
+            display: block;
+            width: max-content;
+            margin: 1rem auto;
+        }
+        .checkout {
+            background-color: #4CAF50;
+            display: block;
+            width: max-content;
+            margin: 1rem auto;
+        }
+        .home-btn {
+            background-color: #007bff;
+            display: block;
+            width: max-content;
+            margin: 1rem auto;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Shopping Cart</h1>
+</header>
+
+<div class="container">
+    <table>
+        <thead>
+            <tr>
+                <th>Image</th>
+                <th>Product</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody id="cart-items">
+            <!-- Items will be loaded here -->
+        </tbody>
+    </table>
+
+    <h2 style="text-align: center;">Total: Rs. <span id="total-price">0</span></h2>
+
+    <button class="btn clear-cart" onclick="clearCart()">Clear Cart</button>
+    <button class="btn checkout" onclick="checkout()">Proceed to Checkout</button>
+    <button class="btn home-btn" onclick="goToHome()">Back to Home</button>
+</div>
+
+<script>
+    function loadCart() {
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        let cartItemsContainer = document.getElementById("cart-items");
+        let totalPriceContainer = document.getElementById("total-price");
+        cartItemsContainer.innerHTML = "";
+        let total = 0;
+
+        cart.forEach((item, index) => {
+            let row = document.createElement("tr");
+            total += item.price * item.quantity;
+            row.innerHTML = ` 
+                <td><img src="${item.image}" alt="${item.name}"></td>
+                <td>${item.name}</td>
+                <td>Rs. ${item.price}</td>
+                <td>${item.quantity}</td>
+                <td>
+                    <button class="btn remove-btn" onclick="removeFromCart(${index})">Remove</button>
+                </td>
+            `;
+            cartItemsContainer.appendChild(row);
+        });
+
+        totalPriceContainer.innerText = total;
+    }
+
+    function removeFromCart(index) {
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        cart.splice(index, 1);
+        localStorage.setItem("cart", JSON.stringify(cart));
+        loadCart();
+    }
+
+    function clearCart() {
+        localStorage.removeItem("cart");
+        loadCart();
+    }
+
+    function checkout() {
+        alert("Proceeding to checkout!");
+        window.location.href = "orderconfim.html"; // Change this to the actual checkout page
+    }
+
+    function goToHome() {
+        window.location.href = "index.html"; // Change this to your homepage URL
+    }
+
+    window.onload = loadCart;
+</script>
+
+</body>
+</html>

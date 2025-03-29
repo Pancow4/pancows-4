@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Confirmation - HOVE Supermarket</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f7f7f7;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 1.5rem 0;
+        }
+        .container {
+            width: 90%;
+            margin: 2rem auto;
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 1rem;
+            text-align: center;
+        }
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+        .btn {
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            color: white;
+            margin: 0.5rem;
+        }
+        .back-btn {
+            background-color: #007bff;
+            display: block;
+            width: max-content;
+            margin: 1rem auto;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Order Confirmation</h1>
+</header>
+
+<div class="container">
+    <h2 style="text-align: center;">Your Order has been Confirmed!</h2>
+    <p style="text-align: center;">Thank you for shopping with HOVE Supermarket. Here are the details of your order:</p>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Image</th>
+                <th>Product</th>
+                <th>Price</th>
+                <th>Quantity</th>
+            </tr>
+        </thead>
+        <tbody id="order-items">
+            <!-- Order items will be dynamically inserted here -->
+        </tbody>
+    </table>
+
+    <h3 style="text-align: center;">Total: Rs. <span id="total-price">0</span></h3>
+
+    <div style="text-align: center;">
+        <p>Email: <span id="user-email"></span></p>
+        <p>Phone Number: <span id="user-phone"></span></p>
+    </div>
+
+    <button class="btn back-btn" onclick="goToHome()">Back to Home</button>
+</div>
+
+<script>
+    function loadOrder() {
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        let orderItemsContainer = document.getElementById("order-items");
+        let totalPriceContainer = document.getElementById("total-price");
+        let userEmail = "venukavithanage@gmail.com,lindulasuraj@gmail.com"; // Replace with the actual email, possibly from a login system
+        let userPhone = "0712796622"; // Replace with the actual phone number, possibly from a login system
+
+        document.getElementById("user-email").innerText = userEmail;
+        document.getElementById("user-phone").innerText = userPhone;
+
+        orderItemsContainer.innerHTML = "";
+        let total = 0;
+
+        cart.forEach((item) => {
+            let row = document.createElement("tr");
+            total += item.price * item.quantity;
+            row.innerHTML = `
+                <td><img src="${item.image}" alt="${item.name}" style="width:50px; height:50px;"></td>
+                <td>${item.name}</td>
+                <td>Rs. ${item.price}</td>
+                <td>${item.quantity}</td>
+            `;
+            orderItemsContainer.appendChild(row);
+        });
+
+        totalPriceContainer.innerText = total;
+    }
+
+    function goToHome() {
+        window.location.href = "index.html"; // Change this to your homepage URL
+    }
+
+    window.onload = loadOrder;
+</script>
+
+</body>
+</html>
