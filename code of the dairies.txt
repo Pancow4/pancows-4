@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dairy Products - HOVE Supermarket</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f7f7f7;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 1.5rem 0;
+        }
+        .container {
+            width: 90%;
+            margin: 2rem auto;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        .products-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        .product {
+            flex: 1 1 calc(25% - 1rem);
+            background-color: white;
+            padding: 1rem;
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .product img {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+        .product h3 {
+            margin-top: 0.5rem;
+            color: #333;
+        }
+        .product p {
+            color: #777;
+        }
+        .product-actions {
+            margin-top: 1rem;
+            display: flex;
+            gap: 0.5rem;
+            justify-content: center;
+        }
+        .btn {
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            color: white;
+        }
+        .add-to-cart {
+            background-color: #4CAF50;
+        }
+        .buy-now {
+            background-color: #FF5733;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Dairy Products</h1>
+    <p>Explore our high-quality selection of dairy products at HOVE Supermarket.</p>
+</header>
+
+<div class="container">
+    <section class="products-grid">
+        <div class="product">
+            <img src="milk bot.jpeg" alt="Milk">
+            <h3>Fresh Milk</h3>
+            <p>Rs. 400 / gallon</p>
+            <div class="product-actions">
+                <button class="btn add-to-cart" onclick="addToCart('Fresh Milk', 400, 'milk bot.jpeg')">Add to Cart</button>
+                <button class="btn buy-now" onclick="buyNow('Fresh Milk', 400)">Buy Now</button>
+            </div>
+        </div>
+        <div class="product">
+            <img src="cheese che.jpeg" alt="Cheddar Cheese">
+            <h3>Cheddar Cheese</h3>
+            <p>Rs. 1200 / lb</p>
+            <div class="product-actions">
+                <button class="btn add-to-cart" onclick="addToCart('Cheddar Cheese', 1200, 'cheese che.jpeg')">Add to Cart</button>
+                <button class="btn buy-now" onclick="buyNow('Cheddar Cheese', 1200)">Buy Now</button>
+            </div>
+        </div>
+        <div class="product">
+            <img src="Unsalted butter.jpeg" alt="Unsalted Butter">
+            <h3>Unsalted Butter</h3>
+            <p>Rs. 800 / pack</p>
+            <div class="product-actions">
+                <button class="btn add-to-cart" onclick="addToCart('Unsalted Butter', 800, 'Unsalted butter.jpeg')">Add to Cart</button>
+                <button class="btn buy-now" onclick="buyNow('Unsalted Butter', 800)">Buy Now</button>
+            </div>
+        </div>
+        <div class="product">
+            <img src="eggs.jpeg" alt="Eggs">
+            <h3>Eggs</h3>
+            <p>Rs. 50 each</p>
+            <div class="product-actions">
+                <button class="btn add-to-cart" onclick="addToCart('Eggs', 50, 'eggs.jpeg')">Add to Cart</button>
+                <button class="btn buy-now" onclick="buyNow('Eggs', 50)">Buy Now</button>
+            </div>
+        </div>
+        <div class="product">
+            <img src="choco.jpeg" alt="Chocolate">
+            <h3>Chocolate</h3>
+            <p>Rs. 1200 each bar</p>
+            <div class="product-actions">
+                <button class="btn add-to-cart" onclick="addToCart('Chocolate', 1200, 'choco.jpeg')">Add to Cart</button>
+                <button class="btn buy-now" onclick="buyNow('Chocolate', 1200)">Buy Now</button>
+            </div>
+        </div>
+        <div class="product">
+            <img src="icecream.jpeg" alt="Sour Cream">
+            <h3>Sour Cream</h3>
+            <p>Rs. 800 each</p>
+            <div class="product-actions">
+                <button class="btn add-to-cart" onclick="addToCart('Sour Cream', 800, 'icecream.jpeg')">Add to Cart</button>
+                <button class="btn buy-now" onclick="buyNow('Sour Cream', 800)">Buy Now</button>
+            </div>
+        </div>
+        <div class="product">
+            <img src="nuttela.jpeg" alt="Chocolate Spread">
+            <h3>Chocolate Spread</h3>
+            <p>Rs. 1500 / one bottle</p>
+            <div class="product-actions">
+                <button class="btn add-to-cart" onclick="addToCart('Chocolate Spread', 1500, 'nuttela.jpeg')">Add to Cart</button>
+                <button class="btn buy-now" onclick="buyNow('Chocolate Spread', 1500)">Buy Now</button>
+            </div>
+        </div>
+    </section>
+</div>
+
+<!-- View Cart button -->
+<a href="cart.html" style="text-decoration: none; color: white; font-weight: bold; background: #333; padding: 10px 20px; border-radius: 5px; display: inline-block;">🛒 View Cart</a>
+
+<script>
+    function addToCart(productName, productPrice, productImage) {
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        
+        // Check if product is already in cart
+        let existingProduct = cart.find(item => item.name === productName);
+        if (existingProduct) {
+            existingProduct.quantity++;
+        } else {
+            cart.push({ name: productName, price: productPrice, quantity: 1, image: productImage });
+        }
+
+        localStorage.setItem('cart', JSON.stringify(cart));
+        alert(productName + " has been added to your cart.");
+    }
+
+    function buyNow(productName, productPrice) {
+        alert("You are buying " + productName + " now.");
+        window.location.href = "cart.html";
+    }
+</script>
+
+</body>
+</html>

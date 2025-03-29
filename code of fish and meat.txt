@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fish and Meat - Pancow Supermarket</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f7f7f7;
+    }
+    header {
+      background-color: #4CAF50;
+      color: white;
+      text-align: center;
+      padding: 1.5rem 0;
+    }
+    .container {
+      width: 90%;
+      margin: 2rem auto;
+    }
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+    .products-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+    .product {
+      flex: 1 1 calc(25% - 1rem);
+      background-color: white;
+      padding: 1rem;
+      border-radius: 5px;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+    .product img {
+      width: 150px;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 5px;
+    }
+    .product h3 {
+      margin-top: 0.5rem;
+      color: #333;
+    }
+    .product p {
+      color: #777;
+    }
+    .product-actions {
+      margin-top: 1rem;
+      display: flex;
+      gap: 0.5rem;
+      justify-content: center;
+    }
+    .btn {
+      padding: 0.5rem 1rem;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+      color: white;
+    }
+    .add-to-cart {
+      background-color: #4CAF50;
+    }
+    .buy-now {
+      background-color: #FF5733;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Fish and Meat</h1>
+  <p>Browse our fresh selection of fish and meat at HOVE Supermarket.</p>
+</header>
+
+<div class="container">
+  <section class="products-grid">
+    <!-- Fresh Salmon -->
+    <div class="product">
+      <img src="salmon.jpeg" alt="Fresh Salmon">
+      <h3>Fresh Salmon</h3>
+      <p>Rs.3000 / lb</p>
+      <div class="product-actions">
+        <button class="btn add-to-cart" onclick="addToCart('Fresh Salmon', 3000, 'salmon.jpeg')">Add to Cart</button>
+        <button class="btn buy-now" onclick="buyNow('Fresh Salmon', 3000)">Buy Now</button>
+      </div>
+    </div>
+    
+    <!-- Tuna Steak -->
+    <div class="product">
+      <img src="tuna.jpeg" alt="Tuna Steak">
+      <h3>Tuna Steak</h3>
+      <p>Rs.10000 / lb</p>
+      <div class="product-actions">
+        <button class="btn add-to-cart" onclick="addToCart('Tuna Steak', 10000, 'tuna.jpeg')">Add to Cart</button>
+        <button class="btn buy-now" onclick="buyNow('Tuna Steak', 10000)">Buy Now</button>
+      </div>
+    </div>
+
+    <!-- Jumbo Shrimp -->
+    <div class="product">
+      <img src="isso.jpeg" alt="Jumbo Shrimp">
+      <h3>Jumbo Shrimp</h3>
+      <p>Rs.15000 / lb</p>
+      <div class="product-actions">
+        <button class="btn add-to-cart" onclick="addToCart('Jumbo Shrimp', 15000, 'isso.jpeg')">Add to Cart</button>
+        <button class="btn buy-now" onclick="buyNow('Jumbo Shrimp', 15000)">Buy Now</button>
+      </div>
+    </div>
+
+    <!-- Chicken Breast -->
+    <div class="product">
+      <img src="chiken.jpeg" alt="Chicken Breast">
+      <h3>Chicken Breast</h3>
+      <p>Rs.1200 / lb</p>
+      <div class="product-actions">
+        <button class="btn add-to-cart" onclick="addToCart('Chicken Breast', 1200, 'chiken.jpeg')">Add to Cart</button>
+        <button class="btn buy-now" onclick="buyNow('Chicken Breast', 1200)">Buy Now</button>
+      </div>
+    </div>
+
+    <!-- Beef Steak -->
+    <div class="product">
+      <img src="beef.jpeg" alt="Beef Steak">
+      <h3>Beef Steak</h3>
+      <p>Rs.2700 / lb</p>
+      <div class="product-actions">
+        <button class="btn add-to-cart" onclick="addToCart('Beef Steak', 2700, 'beef.jpeg')">Add to Cart</button>
+        <button class="btn buy-now" onclick="buyNow('Beef Steak', 2700)">Buy Now</button>
+      </div>
+    </div>
+
+    <!-- Pork Chops -->
+    <div class="product">
+      <img src="pork.jpeg" alt="Pork Chops">
+      <h3>Pork Chops</h3>
+      <p>Rs.1600 / lb</p>
+      <div class="product-actions">
+        <button class="btn add-to-cart" onclick="addToCart('Pork Chops', 1600, 'pork.jpeg')">Add to Cart</button>
+        <button class="btn buy-now" onclick="buyNow('Pork Chops', 1600)">Buy Now</button>
+      </div>
+    </div>
+
+    <!-- Lamb Chops -->
+    <div class="product">
+      <img src="lamb.jpeg" alt="Lamb Chops">
+      <h3>Lamb Chops</h3>
+      <p>Rs.6000 / lb</p>
+      <div class="product-actions">
+        <button class="btn add-to-cart" onclick="addToCart('Lamb Chops', 6000, 'lamb.jpeg')">Add to Cart</button>
+        <button class="btn buy-now" onclick="buyNow('Lamb Chops', 6000)">Buy Now</button>
+      </div>
+    </div>
+  </section>
+</div>
+<a href="cart.html" style="text-decoration: none; color: white; font-weight: bold; background: #333; padding: 10px 20px; border-radius: 5px; display: inline-block;">🛒 View Cart</a>
+
+<script>
+    function addToCart(productName, productPrice, productImage) {
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        
+        // Check if product is already in cart
+        let existingProduct = cart.find(item => item.name === productName);
+        if (existingProduct) {
+            existingProduct.quantity++;
+        } else {
+            cart.push({ name: productName, price: productPrice, quantity: 1, image: productImage });
+        }
+
+        localStorage.setItem('cart', JSON.stringify(cart));
+        alert(productName + " has been added to your cart.");
+    }
+
+    function buyNow(productName, productPrice) {
+        alert("You are buying " + productName + " now.");
+        window.location.href = "cart.html";
+    }
+</script>
+
+</body>
+</html>
