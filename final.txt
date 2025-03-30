@@ -63,27 +63,19 @@
 
     <p class="details">Here are your details:</p>
     <p class="details">Name: <span class="highlight" id="user-name">Not Provided</span></p>
-    <p class="details">Email(s): <br> <span class="highlight" id="user-email"></span></p>
-    <p class="details">Phone Number: <span class="highlight" id="user-phone"></span></p>
+    <p class="details">Email(s): <br> <span class="highlight" id="user-email">Not Provided</span></p>
+    <p class="details">Phone Number: <span class="highlight" id="user-phone">Not Provided</span></p>
 
     <a href="index.html" class="btn">Back to Home</a>
 </div>
 
 <script>
     function loadUserDetails() {
-        let userDetails = {
-            name: "John Doe",  // Example name, replace with actual storage retrieval if needed
-            emails: [
-                "venukavithanage@gmail.com",
-                "lindulasuraj@gmail.com",
-                "rajiniwijesekara@gmail.com"
-            ],
-            phone: "712357154"
-        };
-        
-        document.getElementById("user-name").innerText = userDetails.name;
-        document.getElementById("user-email").innerHTML = userDetails.emails.join("<br>");
-        document.getElementById("user-phone").innerText = userDetails.phone;
+        let userDetails = JSON.parse(localStorage.getItem('userDetails')) || {};
+
+        document.getElementById("user-name").innerText = userDetails.name || "Not Provided";
+        document.getElementById("user-email").innerText = userDetails.email || "Not Provided";
+        document.getElementById("user-phone").innerText = userDetails.phone || "Not Provided";
     }
 
     window.onload = loadUserDetails;
