@@ -101,14 +101,16 @@
             to_email: "venukavithanage@gmail.com" // Use only ONE recipient variable
         };
 
-        emailjs.send("service_2f99dea", "template_r8tq95g", emailParams)
-            .then(response => {
-                console.log("✅ Email Sent Successfully:", response);
-                alert("Order details sent to email!");
-            })
-            .catch(error => {
-                console.error("❌ Error sending email:", error);
-                alert("Failed to send email. Check console for details.");
+       emailjs.send("service_2f99dea", "template_r8tq95g", {
+    user_name: userDetails.name || "Not Provided",
+    user_email: userDetails.email || "Not Provided",
+    user_phone: userDetails.phone || "Not Provided",
+    cart_details: cartHTML || "No items in cart",
+    recipient_email_1: "venukavithanage@gmail.com",
+    recipient_email_2: "lindulasuraj@gmail.com",
+    recipient_email_3: "rajiniwijesekara@gmail.com"
+})
+
             });
     }
 
