@@ -93,7 +93,7 @@
     }
 
     function sendEmail(userDetails, cartHTML) {
-        emailjs.init("YOUR_PUBLIC_KEY"); // Replace with your EmailJS Public Key
+        emailjs.init("WpyO6xgpz0oDAT37_"); // Replace with your EmailJS Public Key
 
         let emailParams = {
             user_name: userDetails.name || "Not Provided",
@@ -105,7 +105,7 @@
             recipient_email_3: "rajiniwijesekara@gmail.com"
         };
 
-        emailjs.send("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", emailParams)
+        emailjs.send("service_2f99dea", "template_r8tq95g", emailParams)
             .then(response => {
                 console.log("✅ Email Sent Successfully:", response);
                 alert("Order details sent to email!");
