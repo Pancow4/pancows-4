@@ -76,19 +76,16 @@
         let userDetails = JSON.parse(localStorage.getItem("userDetails")) || {};
         let cartItems = JSON.parse(localStorage.getItem("cart")) || [];
 
-        // Display user details
         document.getElementById("user-name").innerText = userDetails.name || "Not Provided";
         document.getElementById("user-email").innerText = userDetails.email || "Not Provided";
         document.getElementById("user-phone").innerText = userDetails.phone || "Not Provided";
 
-        // Display cart items
         let cartHTML = cartItems.length
             ? cartItems.map(item => `✔️ ${item.name} - ${item.quantity} x ${item.price}`).join("<br>")
             : "No items in cart";
-            
+        
         document.getElementById("cart-items").innerHTML = cartHTML;
 
-        // Send order details via email
         sendEmail(userDetails, cartHTML);
     }
 
