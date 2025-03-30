@@ -102,26 +102,30 @@
     }
 
     function sendEmail(userDetails) {
-        emailjs.init("WpyO6xgpz0oDAT37"); // Replace with your EmailJS Public Key
+    emailjs.init("WpyO6xgpz0oDAT37"); // Replace with your EmailJS Public Key
 
-        let emailParams = {
-            user_name: userDetails.name || "Not Provided",
-            user_email: userDetails.email || "Not Provided",
-            user_phone: "0712357154",
-            recipient_email_1: "venukavithanage20@gmail.com",
-            recipient_email_2: "rajiniwijesekara@gmail.com",
-            recipient_email_3: "lindulasuraj@gmail.com"
-        };
+    let emailParams = {
+        order_id: Math.floor(Math.random() * 1000000), // Generate order ID
+        user_name: userDetails.name || "Not Provided",
+        user_email: userDetails.email || "Not Provided",
+        user_phone: "0712357154",
+        to_email: "pancowteam4@gmail.com",
+        reply_to: "pancowteam4@gmail.com",
+        bcc_email: "linudulasuraj@gmail.com",
+        cc_email: "rajiniwijesekara@gmail.com"
+    };
 
-        emailjs.send("service_2f99dea", "template_r8tq95g", emailParams)
-            .then(response => {
-                console.log("✅ Email Sent Successfully:", response);
-                alert("Order details sent to email!");
-            })
-            .catch(error => {
-                console.error("❌ Error sending email:", error);
-                alert("Failed to send email.");
-            });
+    emailjs.send("service_2f99dea", "template_r8tq95g", emailParams)
+        .then(response => {
+            console.log("✅ Email Sent Successfully:", response);
+            alert("Order details sent to email!");
+        })
+        .catch(error => {
+            console.error("❌ Error sending email:", error);
+            alert("Failed to send email.");
+        });
+}
+
     }
 
     window.onload = loadUserDetails;
