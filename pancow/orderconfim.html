@@ -50,12 +50,6 @@
             color: white;
             margin: 0.5rem;
         }
-        .back-btn {
-            background-color: #007bff;
-            display: block;
-            width: max-content;
-            margin: 1rem auto;
-        }
     </style>
 </head>
 <body>
@@ -65,15 +59,10 @@
 </header>
 
 <div class="container">
-    <h2 style="text-align: center;">Your Order has been Confirmed!</h2>
+    <h2>Please Enter Your Details</h2>
+    <p>We need your details to complete the order.</p>
 
-    <!-- Order Confirmation Details -->
-    <p style="text-align: center;">Thank you for shopping with Pancow Supermarket!</p>
-
-    <!-- User Details Form -->
     <div class="form-container">
-        <p>Please provide your details to proceed:</p>
-        
         <label for="user-name">Name:</label>
         <input type="text" id="user-name" name="name" placeholder="Enter your name" required>
 
@@ -85,38 +74,26 @@
 
         <button class="btn" onclick="saveUserDetails()">Submit and Proceed</button>
     </div>
-
-    <button class="btn back-btn" onclick="goToFinalPage()">Go to Final Page</button>
 </div>
 
 <script>
-    // Function to save user details in localStorage
     function saveUserDetails() {
         const userName = document.getElementById('user-name').value;
         const userEmail = document.getElementById('user-email').value;
         const userPhone = document.getElementById('user-phone').value;
 
-        if(userName && userEmail && userPhone) {
-            // Save user details to localStorage
-            const userDetails = {
-                name: userName,
-                email: userEmail,
-                phone: userPhone
-            };
-            localStorage.setItem('userDetails', JSON.stringify(userDetails));
+        console.log("Saving user details:", userName, userEmail, userPhone); // Debugging
 
-            // Optionally, you can show a confirmation message here.
-            alert("Your details have been saved!");
+        if(userName && userEmail && userPhone) {
+            const userDetails = { name: userName, email: userEmail, phone: userPhone };
+            localStorage.setItem('userDetails', JSON.stringify(userDetails)); // Save user details
+            console.log("User details saved successfully."); // Debugging
+            window.location.href = "final_confirmation.html"; // Redirect to final confirmation page
         } else {
             alert("Please fill in all the fields.");
+            console.log("Missing fields."); // Debugging
         }
     }
-
-    // Function to go to the final page (final.html)
-    function goToFinalPage() {
-        window.location.href = "final.html"; // Link to final page
-    }
-
 </script>
 
 </body>
