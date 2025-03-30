@@ -90,19 +90,19 @@
     <!-- Display User Details -->
     <h3 style="text-align: center;">Your Contact Details:</h3>
     <div style="text-align: center;">
-        <p>Email 1: <a href="mailto:" id="user-email-1">venukavithanage@gmail.com</a></p>
-        <p>Email 2: <a href="mailto:" id="user-email-2">lindulasuraj@gmail.com/a></p>
-        <p>Email 3: <a href="mailto:" id="user-email-3">rajiniwijesekara@gmail.com</a></p>
-        <p>Phone Number 1: <a href="tel:" id="user-phone-1">0712357154</a></p>
-        <p>Phone Number 2: <a href="tel:" id="user-phone-2">0707242890</a></p>
-        <p>Phone Number 3: <a href="tel:" id="user-phone-3">0712796622</a></p>
+        <p>Email 1: <a href="mailto:" id="user-email-1">No email provided</a></p>
+        <p>Email 2: <a href="mailto:" id="user-email-2">No email provided</a></p>
+        <p>Email 3: <a href="mailto:" id="user-email-3">No email provided</a></p>
+        <p>Phone Number 1: <a href="tel:" id="user-phone-1">No phone provided</a></p>
+        <p>Phone Number 2: <a href="tel:" id="user-phone-2">No phone provided</a></p>
+        <p>Phone Number 3: <a href="tel:" id="user-phone-3">No phone provided</a></p>
     </div>
 
     <button class="btn back-btn" onclick="goToHome()">Back to Home</button>
 </div>
 
 <script>
-    // Function to load order details and display user details
+    // Function to load order details
     function loadOrder() {
         let cart = JSON.parse(localStorage.getItem('cart')) || [];
         let orderItemsContainer = document.getElementById("order-items");
@@ -128,9 +128,9 @@
 
     // Function to display multiple emails and phone numbers as links
     function loadUserDetails() {
-        // Get user details from localStorage
         let userDetails = JSON.parse(localStorage.getItem('userDetails')) || {}; 
 
+        // Retrieve email and phone details from localStorage and update the page
         let userEmail1 = userDetails.email1 || "No email provided";
         let userEmail2 = userDetails.email2 || "No email provided";
         let userEmail3 = userDetails.email3 || "No email provided";
@@ -138,7 +138,6 @@
         let userPhone2 = userDetails.phone2 || "No phone provided";
         let userPhone3 = userDetails.phone3 || "No phone provided";
 
-        // Display user details on the confirmation page with clickable links
         document.getElementById("user-email-1").innerText = userEmail1;
         document.getElementById("user-email-2").innerText = userEmail2;
         document.getElementById("user-email-3").innerText = userEmail3;
@@ -146,21 +145,21 @@
         document.getElementById("user-phone-2").innerText = userPhone2;
         document.getElementById("user-phone-3").innerText = userPhone3;
 
-        // Update the href links with the actual email and phone numbers
-        document.getElementById("user-email-1").href = `mailto:${userEmail1}`;
-        document.getElementById("user-email-2").href = `mailto:${userEmail2}`;
-        document.getElementById("user-email-3").href = `mailto:${userEmail3}`;
-        document.getElementById("user-phone-1").href = `tel:${userPhone1}`;
-        document.getElementById("user-phone-2").href = `tel:${userPhone2}`;
-        document.getElementById("user-phone-3").href = `tel:${userPhone3}`;
+        // Make email and phone number links clickable
+        document.getElementById("user-email-1").setAttribute("href", "mailto:" + userEmail1);
+        document.getElementById("user-email-2").setAttribute("href", "mailto:" + userEmail2);
+        document.getElementById("user-email-3").setAttribute("href", "mailto:" + userEmail3);
+        document.getElementById("user-phone-1").setAttribute("href", "tel:" + userPhone1);
+        document.getElementById("user-phone-2").setAttribute("href", "tel:" + userPhone2);
+        document.getElementById("user-phone-3").setAttribute("href", "tel:" + userPhone3);
     }
 
     // Function to navigate back to the homepage
     function goToHome() {
-        window.location.href = "index.html"; // Change this to your homepage URL
+        window.location.href = "index.html"; // Adjust this if needed
     }
 
-    // Load the order details and user details when the page loads
+    // Load order and user details when the page loads
     window.onload = function() {
         loadOrder();
         loadUserDetails();
