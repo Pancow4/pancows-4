@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -17,7 +18,7 @@
         header {
             background-color: #4CAF50;
             color: white;
-            padding: 1rem 0;
+            padding: 1rem;
             text-align: center;
         }
         .container {
@@ -29,20 +30,21 @@
             background-image: url("dot.png");
             background-size: cover;
             background-position: center;
-            height: 300px;
+            height: 250px;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
+            padding: 1rem;
         }
         .hero h1 {
-            font-size: 3rem;
+            font-size: 2rem;
         }
         .hero p {
-            font-size: 1.2rem;
+            font-size: 1rem;
         }
         .categories, .services {
-            margin: 2rem 0;
+            margin: 1.5rem 0;
         }
         .categories h2, .services h2 {
             margin-bottom: 1rem;
@@ -51,9 +53,10 @@
             display: flex;
             gap: 1rem;
             flex-wrap: wrap;
+            justify-content: center;
         }
         .category, .service {
-            flex: 1 1 calc(25% - 1rem);
+            flex: 1 1 calc(50% - 1rem); /* Adjust for mobile screens */
             background-color: white;
             padding: 1rem;
             border-radius: 5px;
@@ -62,7 +65,8 @@
         }
         .category img, .service img {
             width: 100%;
-            height: 150px;
+            height: auto;
+            max-height: 150px;
             object-fit: cover;
             border-radius: 5px;
         }
@@ -73,28 +77,44 @@
             padding: 1rem 0;
             margin-top: 2rem;
         }
+        @media (max-width: 600px) {
+            .hero {
+                height: 200px;
+                padding: 0.5rem;
+            }
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            .hero p {
+                font-size: 0.9rem;
+            }
+            .category, .service {
+                flex: 1 1 100%; /* Full width for smaller screens */
+            }
+        }
     </style>
 </head>
 <body>
 
 <header>
-    <h1>Its Pancow time :) enjoy!!!</h1>
+    <h1>It's Pancow time :) Enjoy!!!</h1>
     <p>Your one-stop shop for everything you need!</p>
 </header>
 
 <section class="hero">
     <div>
-        
+        <h1>Welcome to Pancow Supermarket</h1>
+        <p>Fresh, quality products at your fingertips.</p>
     </div>
 </section>
 
 <div class="container">
     <!-- Categories Section -->
     <section class="categories">
-        <h2><ul><li>Shop by Category</li></ul></h2>
+        <h2>Shop by Category</h2>
         <div class="categories-grid">
             <div class="category">
-                <img src="F and B.jpeg" alt="Fresh bananas" width="150" height="150">
+                <img src="F and B.jpeg" alt="Fruits & Vegetables">
                 <h3><a href="fruit.html">Fruits & Vegetables</a></h3>
             </div>
             <div class="category">
@@ -114,7 +134,7 @@
 
     <!-- Other Services Section -->
     <section class="services">
-        <h2><ul><li>Other Services</li></ul></h2>
+        <h2>Other Services</h2>
         <div class="services-grid">
             <div class="service">
                 <img src="Movies1.png" alt="Movies">
@@ -136,7 +156,7 @@
 </div>
 
 <footer>
-    <p>&copy; 2025 pancow Supermarket. All rights reserved.</p>
+    <p>&copy; 2025 Pancow Supermarket. All rights reserved.</p>
 </footer>
 
 </body>
