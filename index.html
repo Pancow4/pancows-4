@@ -31,17 +31,6 @@
             background-size: cover;
             background-position: center;
             height: 250px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 1rem;
-        }
-        .hero h1 {
-            font-size: 2rem;
-        }
-        .hero p {
-            font-size: 1rem;
         }
         .categories, .services {
             margin: 1.5rem 0;
@@ -80,13 +69,6 @@
         @media (max-width: 600px) {
             .hero {
                 height: 200px;
-                padding: 0.5rem;
-            }
-            .hero h1 {
-                font-size: 1.8rem;
-            }
-            .hero p {
-                font-size: 0.9rem;
             }
             .category, .service {
                 flex: 1 1 100%; /* Full width for smaller screens */
@@ -101,14 +83,12 @@
     <p>Your one-stop shop for everything you need!</p>
 </header>
 
-<section class="hero">
-    <div>
-        <h1>Welcome to Pancow Supermarket</h1>
-        <p>Fresh, quality products at your fingertips.</p>
-    </div>
-</section>
+<section class="hero"></section>
 
 <div class="container">
+    <h1>Welcome to Pancow Supermarket</h1>
+    <p>Fresh, quality products at your fingertips.</p>
+
     <!-- Categories Section -->
     <section class="categories">
         <h2>Shop by Category</h2>
