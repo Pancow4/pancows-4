@@ -72,10 +72,9 @@
 </div>
 
 <script>
-    function loadOrderDetails() {
-        let checkoutDetails = JSON.parse(localStorage.getItem('checkoutDetails')) || {};
-        let userDetails = checkoutDetails.user || {};
-        let cartItems = checkoutDetails.cart || "No items in cart";
+    function loadUserDetails() {
+        let userDetails = JSON.parse(localStorage.getItem("userDetails")) || {};
+        let cartItems = JSON.parse(localStorage.getItem("cart")) || [];
 
         // Display user details
         document.getElementById("user-name").innerText = userDetails.name || "Not Provided";
@@ -83,20 +82,24 @@
         document.getElementById("user-phone").innerText = userDetails.phone || "Not Provided";
 
         // Display cart items
-        document.getElementById("cart-items").innerHTML = cartItems;
+        let cartHTML = cartItems.length
+            ? cartItems.map(item => `✔️ ${item.name} - ${item.quantity} x ${item.price}`).join("<br>")
+            : "No items in cart";
+            
+        document.getElementById("cart-items").innerHTML = cartHTML;
 
         // Send order details via email
-        sendEmail(userDetails, cartItems);
+        sendEmail(userDetails, cartHTML);
     }
 
-    function sendEmail(userDetails, cartItems) {
+    function sendEmail(userDetails, cartHTML) {
         emailjs.init("WpyO6xgpz0oDAT37_"); // Replace with your EmailJS Public Key
 
         let emailParams = {
             user_name: userDetails.name || "Not Provided",
             user_email: userDetails.email || "Not Provided",
             user_phone: userDetails.phone || "Not Provided",
-            cart_details: cartItems || "No items in cart",
+            cart_details: cartHTML || "No items in cart",
             recipient_email_1: "venukavithanage@gmail.com",
             recipient_email_2: "lindulasuraj@gmail.com",
             recipient_email_3: "rajiniwijesekara@gmail.com"
@@ -113,10 +116,9 @@
             });
     }
 
-    window.onload = loadOrderDetails;
+    window.onload = loadUserDetails;
 </script>
 
-<!-- EmailJS Library -->
 <script src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js"></script>
 
 </body>
