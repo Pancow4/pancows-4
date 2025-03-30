@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -42,13 +41,14 @@
             max-width: 400px;
             margin-bottom: 1rem;
         }
-        .btn {
-            padding: 0.5rem 1rem;
+        .submit-btn {
+            background-color: #4CAF50; /* Green color */
+            color: white;
+            padding: 0.7rem 1.2rem;
             border: none;
             border-radius: 5px;
             cursor: pointer;
             font-weight: bold;
-            color: white;
             margin: 0.5rem;
         }
     </style>
@@ -60,8 +60,8 @@
 </header>
 
 <div class="container">
-    <h2>Please Enter Your Details</h2>
-    <p>We need your details to complete the order.</p>
+    <h2>Your Order has been Confirmed!</h2>
+    <p>Thank you for shopping with Pancow Supermarket!</p>
 
     <div class="form-container">
         <label for="user-name">Name:</label>
@@ -73,7 +73,7 @@
         <label for="user-phone">Phone Number:</label>
         <input type="text" id="user-phone" name="phone" placeholder="Enter your phone number" required>
 
-        <button class="btn" onclick="saveUserDetails()">Submit and Proceed</button>
+        <button class="submit-btn" onclick="saveUserDetails()">Submit and Proceed</button>
     </div>
 </div>
 
@@ -83,16 +83,13 @@
         const userEmail = document.getElementById('user-email').value;
         const userPhone = document.getElementById('user-phone').value;
 
-        console.log("Saving user details:", userName, userEmail, userPhone); // Debugging
-
         if(userName && userEmail && userPhone) {
             const userDetails = { name: userName, email: userEmail, phone: userPhone };
-            localStorage.setItem('userDetails', JSON.stringify(userDetails)); // Save user details
-            console.log("User details saved successfully."); // Debugging
+            localStorage.setItem('userDetails', JSON.stringify(userDetails));
+
             window.location.href = "final.html"; // Redirect to final confirmation page
         } else {
             alert("Please fill in all the fields.");
-            console.log("Missing fields."); // Debugging
         }
     }
 </script>
