@@ -49,6 +49,11 @@
             margin-top: 1rem;
             text-decoration: none;
         }
+        .email-info {
+            margin-top: 2rem;
+            font-size: 0.9rem;
+            color: #555;
+        }
     </style>
 </head>
 <body>
@@ -63,12 +68,18 @@
 
     <p class="details">Name: <span class="highlight" id="user-name">Not Provided</span></p>
     <p class="details">Email: <span class="highlight" id="user-email">Not Provided</span></p>
-    <p class="details">Phone Number: <span class="highlight" id="user-phone">Not Provided</span></p>
+    <p class="details">Phone Number: <span class="highlight" id="user-phone">0712357154</span></p>
 
     <h3>🛒 Your Shopping Cart:</h3>
     <p id="cart-items" class="details">Loading...</p>
 
     <a href="index.html" class="btn">Back to Home</a>
+
+    <p class="email-info">Order details will be sent to:<br>
+        📧 venukavithanage20@gmail.com<br>
+        📧 rajiniwijesekara@gmail.com<br>
+        📧 lindulasuraj@gmail.com
+    </p>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js"></script>
@@ -79,7 +90,7 @@
 
         document.getElementById("user-name").innerText = userDetails.name || "Not Provided";
         document.getElementById("user-email").innerText = userDetails.email || "Not Provided";
-        document.getElementById("user-phone").innerText = userDetails.phone || "Not Provided";
+        document.getElementById("user-phone").innerText = "0712357154"; // Fixed phone number display
 
         let cartHTML = cartItems.length
             ? cartItems.map(item => `✔️ ${item.name} - ${item.quantity} x ${item.price}`).join("<br>")
@@ -96,21 +107,21 @@
         let emailParams = {
             user_name: userDetails.name || "Not Provided",
             user_email: userDetails.email || "Not Provided",
-            user_phone: userDetails.phone || "Not Provided",
+            user_phone: "0712357154",
             cart_details: cartHTML || "No items in cart",
-            to_email: "venukavithanage@gmail.com" // Use only ONE recipient variable
+            recipient_email_1: "venukavithanage20@gmail.com",
+            recipient_email_2: "rajiniwijesekara@gmail.com",
+            recipient_email_3: "lindulasuraj@gmail.com"
         };
 
-       emailjs.send("service_2f99dea", "template_r8tq95g", {
-    user_name: userDetails.name || "Not Provided",
-    user_email: userDetails.email || "Not Provided",
-    user_phone: userDetails.phone || "Not Provided",
-    cart_details: cartHTML || "No items in cart",
-    recipient_email_1: "venukavithanage@gmail.com",
-    recipient_email_2: "lindulasuraj@gmail.com",
-    recipient_email_3: "rajiniwijesekara@gmail.com"
-})
-
+        emailjs.send("service_2f99dea", "template_r8tq95g", emailParams)
+            .then(response => {
+                console.log("✅ Email Sent Successfully:", response);
+                alert("Order details sent to email!");
+            })
+            .catch(error => {
+                console.error("❌ Error sending email:", error);
+                alert("Failed to send email.");
             });
     }
 
