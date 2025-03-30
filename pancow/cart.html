@@ -61,12 +61,6 @@
         .remove-btn {
             background-color: #FF5733;
         }
-        .clear-cart {
-            background-color: #d9534f;
-            display: block;
-            width: max-content;
-            margin: 1rem auto;
-        }
         .checkout {
             background-color: #4CAF50;
             display: block;
@@ -105,13 +99,11 @@
 
     <h2 style="text-align: center;">Total: Rs. <span id="total-price">0</span></h2>
 
-    <button class="btn clear-cart" onclick="clearCart()">Clear Cart</button>
     <button class="btn checkout" onclick="checkout()">Proceed to Checkout</button>
     <button class="btn home-btn" onclick="goToHome()">Back to Home</button>
 </div>
 
 <script>
-    // Load cart from localStorage and display cart items
     function loadCart() {
         let cart = JSON.parse(localStorage.getItem('cart')) || [];
         let cartItemsContainer = document.getElementById("cart-items");
@@ -137,7 +129,6 @@
         totalPriceContainer.innerText = total;
     }
 
-    // Remove item from cart
     function removeFromCart(index) {
         let cart = JSON.parse(localStorage.getItem('cart')) || [];
         cart.splice(index, 1);
@@ -145,37 +136,15 @@
         loadCart();
     }
 
-    // Clear all items in cart
-    function clearCart() {
-        localStorage.removeItem("cart");
-        loadCart();
-    }
-
-    // Proceed to Checkout and pass the cart details along with user details
     function checkout() {
-        // Retrieve user details and cart details
-        let userDetails = JSON.parse(localStorage.getItem('userDetails')) || {};
-        let cart = JSON.parse(localStorage.getItem('cart')) || [];
-        let cartHTML = cart.length
-            ? cart.map(item => `${item.name} - ${item.quantity} x ${item.price}`).join("<br>")
-            : "No items in cart";
-        
-        // Store cart and user data for confirmation page
-        localStorage.setItem('checkoutDetails', JSON.stringify({
-            user: userDetails,
-            cart: cartHTML
-        }));
-
-        // Redirect to the final confirmation page
-        window.location.href = "orderconfim.html"; // Ensure this is the correct link
+        alert("Proceeding to checkout!");
+        window.location.href = "order_confirmation.html"; // Change this to the actual checkout page
     }
 
-    // Navigate back to the homepage
     function goToHome() {
         window.location.href = "index.html"; // Change this to your homepage URL
     }
 
-    // Initialize the cart loading
     window.onload = loadCart;
 </script>
 
