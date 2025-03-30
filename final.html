@@ -70,6 +70,9 @@
     <p class="details">Email: <span class="highlight" id="user-email">Not Provided</span></p>
     <p class="details">Phone Number: <span class="highlight" id="user-phone">0712357154</span></p>
 
+    <h3>🛒 Your Shopping Cart:</h3>
+    <p id="cart-items" class="details">Loading...</p>
+
     <a href="index.html" class="btn">Back to Home</a>
 
     <p class="email-info">Order details will be sent to:<br>
@@ -83,10 +86,17 @@
 <script>
     function loadUserDetails() {
         let userDetails = JSON.parse(localStorage.getItem("userDetails")) || {};
+        let cartItems = JSON.parse(localStorage.getItem("cart")) || [];
 
         document.getElementById("user-name").innerText = userDetails.name || "Not Provided";
         document.getElementById("user-email").innerText = userDetails.email || "Not Provided";
         document.getElementById("user-phone").innerText = "0712357154"; // Fixed phone number display
+
+        let cartHTML = cartItems.length
+            ? cartItems.map(item => `✔️ ${item.name} - ${item.quantity} x ${item.price}`).join("<br>")
+            : "No items in cart";
+        
+        document.getElementById("cart-items").innerHTML = cartHTML;
 
         sendEmail(userDetails);
     }
