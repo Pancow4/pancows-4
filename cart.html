@@ -50,7 +50,7 @@
             border-radius: 5px;
         }
         .btn {
-            padding: 0.5rem 1rem;
+            padding: 0.7rem 1.2rem;
             border: none;
             border-radius: 5px;
             cursor: pointer;
@@ -149,12 +149,19 @@
     }
 
     function checkout() {
-        alert("Proceeding to checkout!");
-        window.location.href = "orderconfirmation.html"; // Redirect to order confirmation page
+        let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+        if (cart.length === 0) {
+            alert("Your cart is empty! Add items before proceeding.");
+            return;
+        }
+
+        // Redirect to order confirmation page
+        window.location.href = "orderconfirmation.html";
     }
 
     function goToHome() {
-        window.location.href = "index.html"; // Redirect to home page
+        window.location.href = "index.html"; // Change this to your homepage URL
     }
 
     window.onload = loadCart;
