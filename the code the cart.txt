@@ -139,7 +139,7 @@
 
     function checkout() {
         alert("Proceeding to checkout!");
-        window.location.href = "order_confirmation.html"; // Change this to the actual checkout page
+        window.location.href = "orderconfim.html"; // Change this to the actual checkout page
     }
 
     function goToHome() {
