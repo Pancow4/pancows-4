@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+=<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -111,6 +111,7 @@
 </div>
 
 <script>
+    // Load cart from localStorage and display cart items
     function loadCart() {
         let cart = JSON.parse(localStorage.getItem('cart')) || [];
         let cartItemsContainer = document.getElementById("cart-items");
@@ -136,6 +137,7 @@
         totalPriceContainer.innerText = total;
     }
 
+    // Remove item from cart
     function removeFromCart(index) {
         let cart = JSON.parse(localStorage.getItem('cart')) || [];
         cart.splice(index, 1);
@@ -143,20 +145,37 @@
         loadCart();
     }
 
+    // Clear all items in cart
     function clearCart() {
         localStorage.removeItem("cart");
         loadCart();
     }
 
+    // Proceed to Checkout and pass the cart details along with user details
     function checkout() {
-        alert("Proceeding to checkout!");
-        window.location.href = "orderconfim.html"; // Change this to the actual checkout page
+        // Retrieve user details and cart details
+        let userDetails = JSON.parse(localStorage.getItem('userDetails')) || {};
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        let cartHTML = cart.length
+            ? cart.map(item => `${item.name} - ${item.quantity} x ${item.price}`).join("<br>")
+            : "No items in cart";
+        
+        // Store cart and user data for confirmation page
+        localStorage.setItem('checkoutDetails', JSON.stringify({
+            user: userDetails,
+            cart: cartHTML
+        }));
+
+        // Redirect to the final confirmation page
+        window.location.href = "orderconfim.html"; // Ensure this is the correct link
     }
 
+    // Navigate back to the homepage
     function goToHome() {
         window.location.href = "index.html"; // Change this to your homepage URL
     }
 
+    // Initialize the cart loading
     window.onload = loadCart;
 </script>
 
