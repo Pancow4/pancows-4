@@ -61,6 +61,12 @@
         .remove-btn {
             background-color: #FF5733;
         }
+        .clear-cart {
+            background-color: #d9534f;
+            display: block;
+            width: max-content;
+            margin: 1rem auto;
+        }
         .checkout {
             background-color: #4CAF50;
             display: block;
@@ -99,6 +105,7 @@
 
     <h2 style="text-align: center;">Total: Rs. <span id="total-price">0</span></h2>
 
+    <button class="btn clear-cart" onclick="clearCart()">Clear Cart</button>
     <button class="btn checkout" onclick="checkout()">Proceed to Checkout</button>
     <button class="btn home-btn" onclick="goToHome()">Back to Home</button>
 </div>
@@ -136,13 +143,18 @@
         loadCart();
     }
 
+    function clearCart() {
+        localStorage.removeItem("cart");
+        loadCart();
+    }
+
     function checkout() {
         alert("Proceeding to checkout!");
-        window.location.href = "order_confirmation.html"; // Change this to the actual checkout page
+        window.location.href = "orderconfirmation.html";
     }
 
     function goToHome() {
-        window.location.href = "index.html"; // Change this to your homepage URL
+        window.location.href = "index.html";
     }
 
     window.onload = loadCart;
