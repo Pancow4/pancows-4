@@ -61,38 +61,66 @@
     <h2>Your Order is Confirmed!</h2>
     <p class="details">Thank you for shopping with <span class="highlight">Pancow Supermarket</span>!</p>
 
-    <p class="details">Here are your details:</p>
     <p class="details">Name: <span class="highlight" id="user-name">Not Provided</span></p>
     <p class="details">Email: <span class="highlight" id="user-email">Not Provided</span></p>
     <p class="details">Phone Number: <span class="highlight" id="user-phone">Not Provided</span></p>
 
-    <h3>Additional Contact Info:</h3>
-    <p class="details">
-        📧 Emails: <br>
-        <span class="highlight">
-            venukavithanage@gmail.com <br>
-            lindulasuraj@gmail.com <br>
-            rajiniwijesekara@gmail.com
-        </span>
-    </p>
-    <p class="details">
-        📞 Phone: <span class="highlight">712357154</span>
-    </p>
+    <h3>🛒 Your Shopping Cart:</h3>
+    <p id="cart-items" class="details">Loading...</p>
 
     <a href="index.html" class="btn">Back to Home</a>
 </div>
 
 <script>
     function loadUserDetails() {
-        let userDetails = JSON.parse(localStorage.getItem('userDetails')) || {};
+        let userDetails = JSON.parse(localStorage.getItem("userDetails")) || {};
+        let cartItems = JSON.parse(localStorage.getItem("shoppingCart")) || [];
 
+        // Display user details
         document.getElementById("user-name").innerText = userDetails.name || "Not Provided";
         document.getElementById("user-email").innerText = userDetails.email || "Not Provided";
         document.getElementById("user-phone").innerText = userDetails.phone || "Not Provided";
+
+        // Display cart items
+        let cartHTML = cartItems.length
+            ? cartItems.map(item => `✔️ ${item.name} - ${item.quantity} x ${item.price}`).join("<br>")
+            : "No items in cart";
+            
+        document.getElementById("cart-items").innerHTML = cartHTML;
+
+        // Send order details via email
+        sendEmail(userDetails, cartHTML);
+    }
+
+    function sendEmail(userDetails, cartHTML) {
+        emailjs.init("YOUR_PUBLIC_KEY"); // Replace with your EmailJS Public Key
+
+        let emailParams = {
+            user_name: userDetails.name || "Not Provided",
+            user_email: userDetails.email || "Not Provided",
+            user_phone: userDetails.phone || "Not Provided",
+            cart_details: cartHTML || "No items in cart",
+            recipient_email_1: "venukavithanage@gmail.com",
+            recipient_email_2: "lindulasuraj@gmail.com",
+            recipient_email_3: "rajiniwijesekara@gmail.com"
+        };
+
+        emailjs.send("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", emailParams)
+            .then(response => {
+                console.log("✅ Email Sent Successfully:", response);
+                alert("Order details sent to email!");
+            })
+            .catch(error => {
+                console.error("❌ Error sending email:", error);
+                alert("Failed to send email.");
+            });
     }
 
     window.onload = loadUserDetails;
 </script>
+
+<!-- EmailJS Library -->
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js"></script>
 
 </body>
 </html>
