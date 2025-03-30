@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Order Confirmation - Pancow Supermarket</title>
+    <title>Final Confirmation - Pancow Supermarket</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -16,99 +16,74 @@
             color: white;
             text-align: center;
             padding: 1.5rem 0;
+            font-size: 1.8rem;
         }
         .container {
-            width: 90%;
+            width: 80%;
+            max-width: 600px;
             margin: 2rem auto;
             background: white;
             padding: 2rem;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        h1 {
             text-align: center;
-            color: #333;
         }
         .details {
-            text-align: center;
-            font-size: 1.1rem;
+            font-size: 1.2rem;
+            color: #333;
+            margin: 1rem 0;
+        }
+        .highlight {
+            font-weight: bold;
+            color: #4CAF50;
         }
         .btn {
-            padding: 0.5rem 1rem;
+            background-color: #007bff;
+            color: white;
+            padding: 0.7rem 1.2rem;
             border: none;
             border-radius: 5px;
             cursor: pointer;
-            font-weight: bold;
-            color: white;
-            background-color: #007bff;
-            display: block;
-            margin: 1rem auto;
+            font-size: 1rem;
+            display: inline-block;
+            margin-top: 1rem;
+            text-decoration: none;
         }
     </style>
 </head>
 <body>
 
 <header>
-    <h1>Order Confirmation</h1>
+    Final Confirmation
 </header>
 
 <div class="container">
-    <h2 style="text-align: center;">Your Order has been Confirmed!</h2>
-    <p style="text-align: center;">Thank you for shopping with Pancow Supermarket!</p>
+    <h2>Your Order is Confirmed!</h2>
+    <p class="details">Thank you for shopping with <span class="highlight">Pancow Supermarket</span>!</p>
 
-    <!-- Display User Details -->
-    <div class="details">
-        <p><strong>Name:</strong> <span id="user-name">No name provided</span></p>
-        <p><strong>Emails:</strong></p>
-        <ul id="user-emails">
-            <li>No emails provided</li>
-        </ul>
-        <p><strong>Phone Numbers:</strong></p>
-        <ul id="user-phones">
-            <li>No phone numbers provided</li>
-        </ul>
-    </div>
+    <p class="details">Here are your details:</p>
+    <p class="details">Name: <span class="highlight" id="user-name">Not Provided</span></p>
+    <p class="details">Email(s): <br> <span class="highlight" id="user-email"></span></p>
+    <p class="details">Phone Number: <span class="highlight" id="user-phone"></span></p>
 
-    <button class="btn" onclick="goToHome()">Back to Home</button>
+    <a href="index.html" class="btn">Back to Home</a>
 </div>
 
 <script>
     function loadUserDetails() {
-        let userDetails = JSON.parse(localStorage.getItem('userDetails')) || {};
-
-        document.getElementById("user-name").innerText = userDetails.name || "No name provided";
-
-        // Display multiple emails
-        let emailList = document.getElementById("user-emails");
-        emailList.innerHTML = ""; // Clear default content
-        let emails = [userDetails.email1, userDetails.email2, userDetails.email3].filter(email => email);
-        if (emails.length > 0) {
-            emails.forEach(email => {
-                let li = document.createElement("li");
-                li.textContent = email;
-                emailList.appendChild(li);
-            });
-        } else {
-            emailList.innerHTML = "<li>No emails provided</li>";
-        }
-
-        // Display multiple phone numbers
-        let phoneList = document.getElementById("user-phones");
-        phoneList.innerHTML = ""; // Clear default content
-        let phones = [userDetails.phone1, userDetails.phone2, userDetails.phone3].filter(phone => phone);
-        if (phones.length > 0) {
-            phones.forEach(phone => {
-                let li = document.createElement("li");
-                li.textContent = phone;
-                phoneList.appendChild(li);
-            });
-        } else {
-            phoneList.innerHTML = "<li>No phone numbers provided</li>";
-        }
-    }
-
-    function goToHome() {
-        window.location.href = "index.html"; // Change this if needed
+        let userDetails = {
+            name: "John Doe",  // Example name, replace with actual storage retrieval if needed
+            emails: [
+                "venukavithanage@gmail.com",
+                "lindulasuraj@gmail.com",
+                "rajiniwijesekara@gmail.com"
+            ],
+            phone: "712357154"
+        };
+        
+        document.getElementById("user-name").innerText = userDetails.name;
+        document.getElementById("user-email").innerHTML = userDetails.emails.join("<br>");
+        document.getElementById("user-phone").innerText = userDetails.phone;
     }
 
     window.onload = loadUserDetails;
