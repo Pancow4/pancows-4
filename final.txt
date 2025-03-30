@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Confirmation - Pancow Supermarket</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f7f7f7;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 1.5rem 0;
+        }
+        .container {
+            width: 90%;
+            margin: 2rem auto;
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 1rem;
+            text-align: center;
+        }
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+        .btn {
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            color: white;
+            margin: 0.5rem;
+        }
+        .back-btn {
+            background-color: #007bff;
+            display: block;
+            width: max-content;
+            margin: 1rem auto;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        label {
+            font-weight: bold;
+        }
+        input {
+            padding: 0.5rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Order Confirmation</h1>
+</header>
+
+<div class="container">
+
+    <!-- User Details Form -->
+    <form id="user-details-form">
+        <label for="user-name">Name:</label>
+        <input type="text" id="user-name" name="name" required>
+
+        <label for="user-email">Email:</label>
+        <input type="email" id="user-email" name="email" required>
+
+        <label for="user-phone">Phone Number:</label>
+        <input type="text" id="user-phone" name="phone" required>
+
+        <button type="submit" class="btn">Submit Details & View Order</button>
+    </form>
+
+    <!-- Order Confirmation -->
+    <div id="order-confirmation" style="display: none;">
+        <p style="text-align: center;">Thank you for shopping with Pancow!</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Image</th>
+                    <th>Product</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                </tr>
+            </thead>
+            <tbody id="order-items">
+                <!-- Order items will be dynamically inserted here -->
+            </tbody>
+        </table>
+
+        <h3 style="text-align: center;">Total: Rs. <span id="total-price">0</span></h3>
+
+        <div style="text-align: center;">
+            <p>Name: <span id="user-name-display"></span></p>
+            <p>Email: <span id="user-email-display"></span></p>
+            <p>Phone Number: <span id="user-phone-display"></span></p>
+        </div>
+
+        <button class="btn back-btn" onclick="goToHome()">Back to Home</button>
+    </div>
+</div>
+
+<script>
+    // Function to load order details from cart
+    function loadOrder() {
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        let orderItemsContainer = document.getElementById("order-items");
+        let totalPriceContainer = document.getElementById("total-price");
+
+        orderItemsContainer.innerHTML = "";
+        let total = 0;
+
+        cart.forEach((item) => {
+            let row = document.createElement("tr");
+            total += item.price * item.quantity;
+            row.innerHTML = `
+                <td><img src="${item.image}" alt="${item.name}" style="width:50px; height:50px;"></td>
+                <td>${item.name}</td>
+                <td>Rs. ${item.price}</td>
+                <td>${item.quantity}</td>
+            `;
+            orderItemsContainer.appendChild(row);
+        });
+
+        totalPriceContainer.innerText = total;
+    }
+
+    // Function to handle user details form submission
+    document.getElementById('user-details-form').addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        // Get user details from form
+        const userName = document.getElementById('user-name').value;
+        const userEmail = document.getElementById('user-email').value;
+        const userPhone = document.getElementById('user-phone').value;
+
+        // Save user details to localStorage
+        const userDetails = {
+            name: userName,
+            email: userEmail,
+            phone: userPhone
+        };
+        localStorage.setItem('userDetails', JSON.stringify(userDetails));
+
+        // Display order confirmation
+        document.getElementById("user-name-display").innerText = userName;
+        document.getElementById("user-email-display").innerText = userEmail;
+        document.getElementById("user-phone-display").innerText = userPhone;
+        
+        // Hide form and show order confirmation
+        document.getElementById("user-details-form").style.display = "none";
+        document.getElementById("order-confirmation").style.display = "block";
+
+        // Load the order details
+        loadOrder();
+    });
+
+    // Function to go back to the home page
+    function goToHome() {
+        window.location.href = "index.html"; // Change this to your homepage URL
+    }
+
+</script>
+
+</body>
+</html>
