@@ -102,7 +102,7 @@
             </div>
         </div>
         <div class="product">
-            <img src="Unsalted butter.jpeg" alt="Unsalted Butter">
+            <img src="unsaltedbutter.jpeg" alt="Unsalted Butter">
             <h3>unsalted Butter</h3>
             <p>Rs. 800 / pack</p>
             <div class="product-actions">
