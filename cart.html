@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shopping Cart - HOVE Supermarket</title>
+    <title>Final Confirmation - Pancow Supermarket</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -16,149 +16,107 @@
             color: white;
             text-align: center;
             padding: 1.5rem 0;
+            font-size: 1.8rem;
         }
         .container {
-            width: 90%;
+            width: 80%;
+            max-width: 600px;
             margin: 2rem auto;
             background: white;
             padding: 2rem;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        h1 {
             text-align: center;
+        }
+        .details {
+            font-size: 1.2rem;
             color: #333;
+            margin: 1rem 0;
         }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 1rem;
-        }
-        th, td {
-            border: 1px solid #ddd;
-            padding: 1rem;
-            text-align: center;
-        }
-        th {
-            background-color: #4CAF50;
-            color: white;
-        }
-        img {
-            width: 50px;
-            height: 50px;
-            object-fit: cover;
-            border-radius: 5px;
+        .highlight {
+            font-weight: bold;
+            color: #4CAF50;
         }
         .btn {
-            padding: 0.5rem 1rem;
+            background-color: #007bff;
+            color: white;
+            padding: 0.7rem 1.2rem;
             border: none;
             border-radius: 5px;
             cursor: pointer;
-            font-weight: bold;
-            color: white;
-            margin: 0.5rem;
-        }
-        .remove-btn {
-            background-color: #FF5733;
-        }
-        .clear-cart {
-            background-color: #d9534f;
-            display: block;
-            width: max-content;
-            margin: 1rem auto;
-        }
-        .checkout {
-            background-color: #4CAF50;
-            display: block;
-            width: max-content;
-            margin: 1rem auto;
-        }
-        .home-btn {
-            background-color: #007bff;
-            display: block;
-            width: max-content;
-            margin: 1rem auto;
+            font-size: 1rem;
+            display: inline-block;
+            margin-top: 1rem;
+            text-decoration: none;
         }
     </style>
 </head>
 <body>
 
 <header>
-    <h1>Shopping Cart</h1>
+    Final Confirmation
 </header>
 
 <div class="container">
-    <table>
-        <thead>
-            <tr>
-                <th>Image</th>
-                <th>Product</th>
-                <th>Price</th>
-                <th>Quantity</th>
-                <th>Action</th>
-            </tr>
-        </thead>
-        <tbody id="cart-items">
-            <!-- Items will be loaded here -->
-        </tbody>
-    </table>
+    <h2>Your Order is Confirmed!</h2>
+    <p class="details">Thank you for shopping with <span class="highlight">Pancow Supermarket</span>!</p>
 
-    <h2 style="text-align: center;">Total: Rs. <span id="total-price">0</span></h2>
+    <p class="details">Name: <span class="highlight" id="user-name">Not Provided</span></p>
+    <p class="details">Email: <span class="highlight" id="user-email">Not Provided</span></p>
+    <p class="details">Phone Number: <span class="highlight" id="user-phone">Not Provided</span></p>
 
-    <button class="btn clear-cart" onclick="clearCart()">Clear Cart</button>
-    <button class="btn checkout" onclick="checkout()">Proceed to Checkout</button>
-    <button class="btn home-btn" onclick="goToHome()">Back to Home</button>
+    <h3>🛒 Your Shopping Cart:</h3>
+    <p id="cart-items" class="details">Loading...</p>
+
+    <a href="index.html" class="btn">Back to Home</a>
 </div>
 
 <script>
-    function loadCart() {
-        let cart = JSON.parse(localStorage.getItem('cart')) || [];
-        let cartItemsContainer = document.getElementById("cart-items");
-        let totalPriceContainer = document.getElementById("total-price");
-        cartItemsContainer.innerHTML = "";
-        let total = 0;
+    function loadUserDetails() {
+        let userDetails = JSON.parse(localStorage.getItem("userDetails")) || {};
+        let cartItems = JSON.parse(localStorage.getItem("cart")) || [];
 
-        cart.forEach((item, index) => {
-            let row = document.createElement("tr");
-            total += item.price * item.quantity;
-            row.innerHTML = ` 
-                <td><img src="${item.image}" alt="${item.name}"></td>
-                <td>${item.name}</td>
-                <td>Rs. ${item.price}</td>
-                <td>${item.quantity}</td>
-                <td>
-                    <button class="btn remove-btn" onclick="removeFromCart(${index})">Remove</button>
-                </td>
-            `;
-            cartItemsContainer.appendChild(row);
-        });
+        document.getElementById("user-name").innerText = userDetails.name || "Not Provided";
+        document.getElementById("user-email").innerText = userDetails.email || "Not Provided";
+        document.getElementById("user-phone").innerText = userDetails.phone || "Not Provided";
 
-        totalPriceContainer.innerText = total;
+        let cartHTML = cartItems.length
+            ? cartItems.map(item => `✔️ ${item.name} - ${item.quantity} x ${item.price}`).join("<br>")
+            : "No items in cart";
+        
+        document.getElementById("cart-items").innerHTML = cartHTML;
+
+        sendEmail(userDetails, cartHTML);
     }
 
-    function removeFromCart(index) {
-        let cart = JSON.parse(localStorage.getItem('cart')) || [];
-        cart.splice(index, 1);
-        localStorage.setItem("cart", JSON.stringify(cart));
-        loadCart();
+    function sendEmail(userDetails, cartHTML) {
+        emailjs.init("WpyO6xgpz0oDAT37_"); // Replace with your EmailJS Public Key
+
+        let emailParams = {
+            user_name: userDetails.name || "Not Provided",
+            user_email: userDetails.email || "Not Provided",
+            user_phone: userDetails.phone || "Not Provided",
+            cart_details: cartHTML || "No items in cart",
+            recipient_email_1: "venukavithanage@gmail.com",
+            recipient_email_2: "lindulasuraj@gmail.com",
+            recipient_email_3: "rajiniwijesekara@gmail.com"
+        };
+
+        emailjs.send("service_2f99dea", "template_r8tq95g", emailParams)
+            .then(response => {
+                console.log("✅ Email Sent Successfully:", response);
+                alert("Order details sent to email!");
+            })
+            .catch(error => {
+                console.error("❌ Error sending email:", error);
+                alert("Failed to send email.");
+            });
     }
 
-    function clearCart() {
-        localStorage.removeItem("cart");
-        loadCart();
-    }
-
-    function checkout() {
-        alert("Proceeding to checkout!");
-        window.location.href = "orderconfim.html"; // Change this to the actual checkout page
-    }
-
-    function goToHome() {
-        window.location.href = "index.html"; // Change this to your homepage URL
-    }
-
-    window.onload = loadCart;
+    window.onload = loadUserDetails;
 </script>
+
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js"></script>
 
 </body>
 </html>
