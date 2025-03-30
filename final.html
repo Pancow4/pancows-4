@@ -66,8 +66,8 @@
     <h2>Your Order is Confirmed!</h2>
     <p class="details">Thank you for shopping with <span class="highlight">Pancow Supermarket</span>!</p>
 
-    <p class="details">Name: <span class="highlight" id="user-name">Not Provided</span></p>
-    <p class="details">Email: <span class="highlight" id="user-email">Not Provided</span></p>
+    <p class="details">Name: <span class="highlight" id="user-name">Loading...</span></p>
+    <p class="details">Email: <span class="highlight" id="user-email">Loading...</span></p>
     <p class="details">Phone Number: <span class="highlight" id="user-phone">0712357154</span></p>
 
     <h3>🛒 Your Shopping Cart:</h3>
@@ -88,9 +88,12 @@
         let userDetails = JSON.parse(localStorage.getItem("userDetails")) || {};
         let cartItems = JSON.parse(localStorage.getItem("cart")) || [];
 
+        console.log("User Details:", userDetails);
+        console.log("Cart Items:", cartItems);
+
         document.getElementById("user-name").innerText = userDetails.name || "Not Provided";
         document.getElementById("user-email").innerText = userDetails.email || "Not Provided";
-        document.getElementById("user-phone").innerText = "0712357154"; // Fixed phone number display
+        document.getElementById("user-phone").innerText = "0712357154"; 
 
         let cartHTML = cartItems.length
             ? cartItems.map(item => `✔️ ${item.name} - ${item.quantity} x ${item.price}`).join("<br>")
@@ -98,34 +101,35 @@
         
         document.getElementById("cart-items").innerHTML = cartHTML;
 
-        sendEmail(userDetails);
+        sendEmail(userDetails, cartHTML);
     }
 
-    function sendEmail(userDetails) {
-    emailjs.init("WpyO6xgpz0oDAT37"); // Replace with your EmailJS Public Key
+    function sendEmail(userDetails, cartDetails) {
+        emailjs.init("WpyO6xgpz0oDAT37"); 
 
-    let emailParams = {
-        order_id: Math.floor(Math.random() * 1000000), // Generate order ID
-        user_name: userDetails.name || "Not Provided",
-        user_email: userDetails.email || "Not Provided",
-        user_phone: "0712357154",
-        to_email: "pancowteam4@gmail.com",
-        reply_to: "pancowteam4@gmail.com",
-        bcc_email: "linudulasuraj@gmail.com",
-        cc_email: "rajiniwijesekara@gmail.com"
-    };
+        let emailParams = {
+            order_id: Math.floor(Math.random() * 1000000), 
+            user_name: userDetails.name || "Not Provided",
+            user_email: userDetails.email || "Not Provided",
+            user_phone: "0712357154",
+            cart_details: cartDetails,
+            to_email: "pancowteam4@gmail.com",
+            reply_to: "pancowteam4@gmail.com",
+            bcc_email: "linudulasuraj@gmail.com",
+            cc_email: "rajiniwijesekara@gmail.com"
+        };
 
-    emailjs.send("service_2f99dea", "template_r8tq95g", emailParams)
-        .then(response => {
-            console.log("✅ Email Sent Successfully:", response);
-            alert("Order details sent to email!");
-        })
-        .catch(error => {
-            console.error("❌ Error sending email:", error);
-            alert("Failed to send email.");
-        });
-}
+        console.log("Sending Email With:", emailParams);
 
+        emailjs.send("service_2f99dea", "template_r8tq95g", emailParams)
+            .then(response => {
+                console.log("✅ Email Sent Successfully:", response);
+                alert("Order details sent to email!");
+            })
+            .catch(error => {
+                console.error("❌ Error sending email:", error);
+                alert("Failed to send email.");
+            });
     }
 
     window.onload = loadUserDetails;
