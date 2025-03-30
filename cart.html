@@ -50,7 +50,7 @@
             border-radius: 5px;
         }
         .btn {
-            padding: 0.7rem 1.2rem;
+            padding: 0.5rem 1rem;
             border: none;
             border-radius: 5px;
             cursor: pointer;
@@ -149,19 +149,12 @@
     }
 
     function checkout() {
-        let cart = JSON.parse(localStorage.getItem("cart")) || [];
-
-        if (cart.length === 0) {
-            alert("Your cart is empty! Add items before proceeding.");
-            return;
-        }
-
-        // Redirect to order confirmation page
+        alert("Proceeding to checkout!");
         window.location.href = "orderconfim.html";
     }
 
     function goToHome() {
-        window.location.href = "index.html"; // Change this to your homepage URL
+        window.location.href = "index.html";
     }
 
     window.onload = loadCart;
