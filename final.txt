@@ -71,24 +71,22 @@
     <a href="index.html" class="btn">Back to Home</a>
 </div>
 
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js"></script>
 <script>
     function loadUserDetails() {
         let userDetails = JSON.parse(localStorage.getItem("userDetails")) || {};
         let cartItems = JSON.parse(localStorage.getItem("cart")) || [];
 
-        // Display user details
         document.getElementById("user-name").innerText = userDetails.name || "Not Provided";
         document.getElementById("user-email").innerText = userDetails.email || "Not Provided";
         document.getElementById("user-phone").innerText = userDetails.phone || "Not Provided";
 
-        // Display cart items
         let cartHTML = cartItems.length
             ? cartItems.map(item => `✔️ ${item.name} - ${item.quantity} x ${item.price}`).join("<br>")
             : "No items in cart";
-            
+        
         document.getElementById("cart-items").innerHTML = cartHTML;
 
-        // Send order details via email
         sendEmail(userDetails, cartHTML);
     }
 
@@ -100,9 +98,7 @@
             user_email: userDetails.email || "Not Provided",
             user_phone: userDetails.phone || "Not Provided",
             cart_details: cartHTML || "No items in cart",
-            recipient_email_1: "venukavithanage@gmail.com",
-            recipient_email_2: "lindulasuraj@gmail.com",
-            recipient_email_3: "rajiniwijesekara@gmail.com"
+            to_email: "venukavithanage@gmail.com" // Use only ONE recipient variable
         };
 
         emailjs.send("service_2f99dea", "template_r8tq95g", emailParams)
@@ -112,14 +108,12 @@
             })
             .catch(error => {
                 console.error("❌ Error sending email:", error);
-                alert("Failed to send email.");
+                alert("Failed to send email. Check console for details.");
             });
     }
 
     window.onload = loadUserDetails;
 </script>
-
-<script src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js"></script>
 
 </body>
 </html>
