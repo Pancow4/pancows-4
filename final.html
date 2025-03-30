@@ -88,15 +88,14 @@
     <h3 style="text-align: center;">Total: Rs. <span id="total-price">0</span></h3>
 
     <!-- Display User Details -->
-    <h3 style="text-align: center;">Your Details:</h3>
+    <h3 style="text-align: center;">Your Contact Details:</h3>
     <div style="text-align: center;">
-        <p>Name: <span id="user-name"></span></p>
-        <p>Email 1: <span id="user-email-1"></span></p>
-        <p>Email 2: <span id="user-email-2"></span></p>
-        <p>Email 3: <span id="user-email-3"></span></p>
-        <p>Phone Number 1: <span id="user-phone-1"></span></p>
-        <p>Phone Number 2: <span id="user-phone-2"></span></p>
-        <p>Phone Number 3: <span id="user-phone-3"></span></p>
+        <p>Email 1: <a href="mailto:" id="user-email-1">venukavithanage@gmail.com</a></p>
+        <p>Email 2: <a href="mailto:" id="user-email-2">lindulasuraj@gmail.com/a></p>
+        <p>Email 3: <a href="mailto:" id="user-email-3">rajiniwijesekara@gmail.com</a></p>
+        <p>Phone Number 1: <a href="tel:" id="user-phone-1">0712357154</a></p>
+        <p>Phone Number 2: <a href="tel:" id="user-phone-2">0707242890</a></p>
+        <p>Phone Number 3: <a href="tel:" id="user-phone-3">0712796622</a></p>
     </div>
 
     <button class="btn back-btn" onclick="goToHome()">Back to Home</button>
@@ -127,12 +126,11 @@
         totalPriceContainer.innerText = total;
     }
 
-    // Function to display multiple emails and phone numbers
+    // Function to display multiple emails and phone numbers as links
     function loadUserDetails() {
         // Get user details from localStorage
         let userDetails = JSON.parse(localStorage.getItem('userDetails')) || {}; 
 
-        let userName = userDetails.name || "No name provided";
         let userEmail1 = userDetails.email1 || "No email provided";
         let userEmail2 = userDetails.email2 || "No email provided";
         let userEmail3 = userDetails.email3 || "No email provided";
@@ -140,14 +138,21 @@
         let userPhone2 = userDetails.phone2 || "No phone provided";
         let userPhone3 = userDetails.phone3 || "No phone provided";
 
-        // Display user details on the confirmation page
-        document.getElementById("user-name").innerText = userName;
+        // Display user details on the confirmation page with clickable links
         document.getElementById("user-email-1").innerText = userEmail1;
         document.getElementById("user-email-2").innerText = userEmail2;
         document.getElementById("user-email-3").innerText = userEmail3;
         document.getElementById("user-phone-1").innerText = userPhone1;
         document.getElementById("user-phone-2").innerText = userPhone2;
         document.getElementById("user-phone-3").innerText = userPhone3;
+
+        // Update the href links with the actual email and phone numbers
+        document.getElementById("user-email-1").href = `mailto:${userEmail1}`;
+        document.getElementById("user-email-2").href = `mailto:${userEmail2}`;
+        document.getElementById("user-email-3").href = `mailto:${userEmail3}`;
+        document.getElementById("user-phone-1").href = `tel:${userPhone1}`;
+        document.getElementById("user-phone-2").href = `tel:${userPhone2}`;
+        document.getElementById("user-phone-3").href = `tel:${userPhone3}`;
     }
 
     // Function to navigate back to the homepage
