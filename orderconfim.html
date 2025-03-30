@@ -24,16 +24,12 @@
             padding: 2rem;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        h1 {
             text-align: center;
-            color: #333;
         }
         .form-container {
-            margin-top: 2rem;
-            text-align: center;
+            margin-top: 1.5rem;
         }
-        .form-container input {
+        input {
             padding: 0.5rem;
             border: 1px solid #ddd;
             border-radius: 5px;
@@ -42,19 +38,15 @@
             margin-bottom: 1rem;
         }
         .btn {
-            padding: 0.5rem 1rem;
+            background-color: #007bff;
+            color: white;
+            padding: 0.7rem 1.2rem;
             border: none;
             border-radius: 5px;
             cursor: pointer;
-            font-weight: bold;
-            color: white;
-            margin: 0.5rem;
-        }
-        .back-btn {
-            background-color: #007bff;
-            display: block;
-            width: max-content;
-            margin: 1rem auto;
+            font-size: 1rem;
+            display: inline-block;
+            margin-top: 1rem;
         }
     </style>
 </head>
@@ -65,58 +57,40 @@
 </header>
 
 <div class="container">
-    <h2 style="text-align: center;">Your Order has been Confirmed!</h2>
+    <h2>Your Order has been Confirmed!</h2>
+    <p>Thank you for shopping with Pancow Supermarket!</p>
 
-    <!-- Order Confirmation Details -->
-    <p style="text-align: center;">Thank you for shopping with Pancow Supermarket!</p>
-
-    <!-- User Details Form -->
     <div class="form-container">
-        <p>Please provide your details to proceed:</p>
+        <p><strong>Please enter your details:</strong></p>
         
-        <label for="user-name">Name:</label>
-        <input type="text" id="user-name" name="name" placeholder="Enter your name" required>
+        <input type="text" id="user-name" placeholder="Enter your name" required>
+        <input type="email" id="user-email" placeholder="Enter your email" required>
+        <input type="text" id="user-phone" placeholder="Enter your phone number" required>
 
-        <label for="user-email">Email:</label>
-        <input type="email" id="user-email" name="email" placeholder="Enter your email" required>
-
-        <label for="user-phone">Phone Number:</label>
-        <input type="text" id="user-phone" name="phone" placeholder="Enter your phone number" required>
-
-        <button class="btn" onclick="saveUserDetails()">Submit and Proceed</button>
+        <button class="btn" onclick="saveAndProceed()">Submit and Proceed</button>
     </div>
-
-    <button class="btn back-btn" onclick="goToFinalPage()">Go to Final Page</button>
 </div>
 
 <script>
-    // Function to save user details in localStorage
-    function saveUserDetails() {
-        const userName = document.getElementById('user-name').value;
-        const userEmail = document.getElementById('user-email').value;
-        const userPhone = document.getElementById('user-phone').value;
+    function saveAndProceed() {
+        let userName = document.getElementById('user-name').value;
+        let userEmail = document.getElementById('user-email').value;
+        let userPhone = document.getElementById('user-phone').value;
 
-        if(userName && userEmail && userPhone) {
-            // Save user details to localStorage
-            const userDetails = {
+        if (userName && userEmail && userPhone) {
+            let userDetails = {
                 name: userName,
                 email: userEmail,
                 phone: userPhone
             };
             localStorage.setItem('userDetails', JSON.stringify(userDetails));
 
-            // Optionally, you can show a confirmation message here.
-            alert("Your details have been saved!");
+            // Navigate to final page after saving
+            window.location.href = "final.html";
         } else {
-            alert("Please fill in all the fields.");
+            alert("Please fill in all fields before proceeding.");
         }
     }
-
-    // Function to go to the final page (final.html)
-    function goToFinalPage() {
-        window.location.href = "final.html"; // Link to final page
-    }
-
 </script>
 
 </body>
