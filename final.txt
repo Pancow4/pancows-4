@@ -1,5 +1,4 @@
 
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -131,30 +130,7 @@
     function loadUserDetails() {
         let userDetails = JSON.parse(localStorage.getItem('userDetails')) || {}; 
 
-        // Retrieve email and phone details from localStorage and update the page
-        let userEmail1 = userDetails.email1 || "No email provided";
-        let userEmail2 = userDetails.email2 || "No email provided";
-        let userEmail3 = userDetails.email3 || "No email provided";
-        let userPhone1 = userDetails.phone1 || "No phone provided";
-        let userPhone2 = userDetails.phone2 || "No phone provided";
-        let userPhone3 = userDetails.phone3 || "No phone provided";
-
-        document.getElementById("user-email-1").innerText = userEmail1;
-        document.getElementById("user-email-2").innerText = userEmail2;
-        document.getElementById("user-email-3").innerText = userEmail3;
-        document.getElementById("user-phone-1").innerText = userPhone1;
-        document.getElementById("user-phone-2").innerText = userPhone2;
-        document.getElementById("user-phone-3").innerText = userPhone3;
-
-        // Make email and phone number links clickable
-        document.getElementById("user-email-1").setAttribute("href", "mailto:" + userEmail1);
-        document.getElementById("user-email-2").setAttribute("href", "mailto:" + userEmail2);
-        document.getElementById("user-email-3").setAttribute("href", "mailto:" + userEmail3);
-        document.getElementById("user-phone-1").setAttribute("href", "tel:" + userPhone1);
-        document.getElementById("user-phone-2").setAttribute("href", "tel:" + userPhone2);
-        document.getElementById("user-phone-3").setAttribute("href", "tel:" + userPhone3);
-    }
-
+       
     // Function to navigate back to the homepage
     function goToHome() {
         window.location.href = "index.html"; // Adjust this if needed
