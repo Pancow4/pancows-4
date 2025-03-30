@@ -15,23 +15,23 @@
             background-color: #4CAF50;
             color: white;
             text-align: center;
-            padding: 1.5rem 0;
-            font-size: 1.8rem;
+            padding: 1rem;
+            font-size: 1.5rem;
         }
         .container {
-            width: 80%;
-            max-width: 600px;
-            margin: 2rem auto;
+            width: 90%;
+            max-width: 500px;
+            margin: 1.5rem auto;
             background: white;
-            padding: 2rem;
+            padding: 1.5rem;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             text-align: center;
         }
         .details {
-            font-size: 1.2rem;
+            font-size: 1rem;
             color: #333;
-            margin: 1rem 0;
+            margin: 0.5rem 0;
         }
         .highlight {
             font-weight: bold;
@@ -40,7 +40,7 @@
         .btn {
             background-color: #007bff;
             color: white;
-            padding: 0.7rem 1.2rem;
+            padding: 0.6rem 1rem;
             border: none;
             border-radius: 5px;
             cursor: pointer;
@@ -50,7 +50,7 @@
             text-decoration: none;
         }
         .email-info {
-            margin-top: 2rem;
+            margin-top: 1.5rem;
             font-size: 0.9rem;
             color: #555;
         }
@@ -70,9 +70,6 @@
     <p class="details">Email: <span class="highlight" id="user-email">Not Provided</span></p>
     <p class="details">Phone Number: <span class="highlight" id="user-phone">0712357154</span></p>
 
-    <h3>🛒 Your Shopping Cart:</h3>
-    <p id="cart-items" class="details">Loading...</p>
-
     <a href="index.html" class="btn">Back to Home</a>
 
     <p class="email-info">Order details will be sent to:<br>
@@ -86,29 +83,21 @@
 <script>
     function loadUserDetails() {
         let userDetails = JSON.parse(localStorage.getItem("userDetails")) || {};
-        let cartItems = JSON.parse(localStorage.getItem("cart")) || [];
 
         document.getElementById("user-name").innerText = userDetails.name || "Not Provided";
         document.getElementById("user-email").innerText = userDetails.email || "Not Provided";
         document.getElementById("user-phone").innerText = "0712357154"; // Fixed phone number display
 
-        let cartHTML = cartItems.length
-            ? cartItems.map(item => `✔️ ${item.name} - ${item.quantity} x ${item.price}`).join("<br>")
-            : "No items in cart";
-        
-        document.getElementById("cart-items").innerHTML = cartHTML;
-
-        sendEmail(userDetails, cartHTML);
+        sendEmail(userDetails);
     }
 
-    function sendEmail(userDetails, cartHTML) {
+    function sendEmail(userDetails) {
         emailjs.init("WpyO6xgpz0oDAT37"); // Replace with your EmailJS Public Key
 
         let emailParams = {
             user_name: userDetails.name || "Not Provided",
             user_email: userDetails.email || "Not Provided",
             user_phone: "0712357154",
-            cart_details: cartHTML || "No items in cart",
             recipient_email_1: "venukavithanage20@gmail.com",
             recipient_email_2: "rajiniwijesekara@gmail.com",
             recipient_email_3: "lindulasuraj@gmail.com"
