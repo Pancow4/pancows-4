@@ -68,7 +68,7 @@
 
     <p class="details">Name: <span class="highlight" id="user-name">Loading...</span></p>
     <p class="details">Email: <span class="highlight" id="user-email">Loading...</span></p>
-    <p class="details">Phone Number: <span class="highlight" id="user-phone">0712357154</span></p>
+    <p class="details">Phone Number: <span class="highlight" id="user-phone">Loading...</span></p>
 
     <h3>🛒 Your Shopping Cart:</h3>
     <p id="cart-items" class="details">Loading...</p>
@@ -93,7 +93,7 @@
 
         document.getElementById("user-name").innerText = userDetails.name || "Not Provided";
         document.getElementById("user-email").innerText = userDetails.email || "Not Provided";
-        document.getElementById("user-phone").innerText = "0712357154"; 
+        document.getElementById("user-phone").innerText = userDetails.phone || "Not Provided"; 
 
         let cartHTML = cartItems.length
             ? cartItems.map(item => `✔️ ${item.name} - ${item.quantity} x ${item.price}`).join("<br>")
@@ -105,13 +105,13 @@
     }
 
     function sendEmail(userDetails, cartDetails) {
-        emailjs.init("WpyO6xgpz0oDAT37"); 
+        emailjs.init("0HNe3gzRFllVRyhDg"); 
 
         let emailParams = {
             order_id: Math.floor(Math.random() * 1000000), 
             user_name: userDetails.name || "Not Provided",
             user_email: userDetails.email || "Not Provided",
-            user_phone: "0712357154",
+            user_phone: userDetails.phone || "Not Provided",
             cart_details: cartDetails,
             to_email: "pancowteam4@gmail.com",
             reply_to: "pancowteam4@gmail.com",
