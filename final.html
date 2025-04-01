@@ -105,7 +105,7 @@
     }
 
     function sendEmail(userDetails, cartDetails) {
-        emailjs.init("0HNe3gzRFllVRyhDg"); 
+        emailjs.init("0HNe3gzRFllVRyhDg"); // Make sure this is your correct EmailJS Public Key
 
         let emailParams = {
             order_id: Math.floor(Math.random() * 1000000), 
@@ -114,7 +114,7 @@
             user_phone: userDetails.phone || "Not Provided",
             cart_details: cartDetails,
             to_email: "pancowteam4@gmail.com",
-            reply_to: "pancowteam4@gmail.com",
+            reply_to: "venukavithanage20@gmail.com",
             bcc_email: "linudulasuraj@gmail.com",
             cc_email: "rajiniwijesekara@gmail.com"
         };
