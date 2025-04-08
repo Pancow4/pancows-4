@@ -21,13 +21,14 @@
             width: 90%;
             margin: 2rem auto;
             background: white;
-            padding: 2rem;
+            padding: 1.5rem;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
         h1 {
             text-align: center;
             color: #333;
+            font-size: 1.8rem;
         }
         table {
             width: 100%;
@@ -57,27 +58,56 @@
             font-weight: bold;
             color: white;
             margin: 0.5rem;
+            display: block;
+            width: 100%;
         }
         .remove-btn {
             background-color: #FF5733;
         }
         .clear-cart {
             background-color: #d9534f;
-            display: block;
-            width: max-content;
-            margin: 1rem auto;
         }
         .checkout {
             background-color: #4CAF50;
-            display: block;
-            width: max-content;
-            margin: 1rem auto;
         }
         .home-btn {
             background-color: #007bff;
-            display: block;
-            width: max-content;
-            margin: 1rem auto;
+        }
+
+        /* Mobile-specific styles */
+        @media (max-width: 768px) {
+            table {
+                font-size: 0.9rem;
+            }
+
+            th, td {
+                padding: 0.8rem;
+            }
+
+            .btn {
+                font-size: 1rem;
+                padding: 0.8rem;
+            }
+
+            h1 {
+                font-size: 1.5rem;
+            }
+
+            img {
+                width: 40px;
+                height: 40px;
+            }
+
+            .container {
+                padding: 1rem;
+                width: 100%;
+            }
+
+            .clear-cart, .checkout, .home-btn {
+                width: 100%;
+                padding: 1rem;
+                margin-top: 1rem;
+            }
         }
     </style>
 </head>
