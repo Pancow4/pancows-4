@@ -34,19 +34,23 @@
 
         /* Hero banner with black background and white text */
         .hero {
-            background-color: #000; /* Black background */
+            background-image: url('dot.png'); /* Add the background image here */
+            background-size: cover;
+            background-position: center;
             color: white;
             text-align: center;
-            padding: 1.5rem 1rem; /* Adjust padding for the banner */
-            height: 200px; /* Adjust height */
+            padding: 2.5rem 1rem; /* Adjust padding for the banner */
+            height: 350px; /* Adjust height to fit your design */
             display: flex;
             justify-content: center;
             align-items: center;
             font-size: 1.8rem;
             font-weight: bold;
+            position: relative;
         }
+
         .hero h2 {
-            background-color: rgba(0, 0, 0, 0.7); /* Darker background */
+            background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent dark background for text */
             padding: 1rem 2rem;
             border-radius: 8px;
         }
@@ -55,7 +59,7 @@
         .container {
             width: 90%;
             max-width: 1200px;
-            margin: 0 auto; /* Removed extra margin to avoid white space */
+            margin: 0 auto;
             padding: 2rem;
             background-color: #fff;
             border-radius: 10px;
@@ -119,7 +123,7 @@
 <body>
 
 <header>
-    <h1>Its Pancow time enjoy:)</h1>
+    <h1>Welcome to Pancow Supermarket</h1>
     <p>Your one-stop shop for all your needs!</p>
 </header>
 
