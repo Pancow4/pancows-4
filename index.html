@@ -14,6 +14,7 @@
         }
         body {
             background-color: #f7f7f7;
+            color: #333;
         }
         header {
             background-color: #4CAF50;
@@ -23,30 +24,34 @@
             border-bottom: 5px solid #333;
         }
         header h1 {
-            font-size: 2.5rem;
+            font-size: 2.8rem;
             margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
         }
         header p {
             font-size: 1.2rem;
         }
         .hero {
-            background-image: url('dot.png'); /* You provided dot.png as background */
+            background-image: url('dot.png'); /* Background image */
             background-size: cover;
             background-position: center;
-            height: 350px;
+            height: 400px;
             text-align: center;
             display: flex;
             justify-content: center;
             align-items: center;
             color: white;
-            font-size: 2rem;
+            font-size: 2.5rem;
             font-weight: 700;
             position: relative;
+            border-radius: 10px;
         }
         .hero h2 {
             background-color: rgba(0, 0, 0, 0.5);
             padding: 1rem 2rem;
             border-radius: 5px;
+            font-size: 2rem;
         }
         .container {
             width: 90%;
@@ -75,10 +80,11 @@
             border-radius: 8px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             text-align: center;
-            transition: transform 0.3s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
         .category:hover, .service:hover {
             transform: scale(1.05);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
         }
         .category img, .service img {
             width: 100%;
@@ -94,6 +100,7 @@
             text-decoration: none;
             color: #4CAF50;
             font-weight: bold;
+            font-size: 1.1rem;
         }
         footer {
             background-color: #333;
@@ -141,7 +148,7 @@
 </header>
 
 <section class="hero">
-    <h2>Fresh Products, Best Prices - Always!</h2>
+    <h2>Shop Fresh, Live Better!</h2>
 </section>
 
 <div class="container">
