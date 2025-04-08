@@ -11,58 +11,89 @@
             box-sizing: border-box;
         }
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f7f7f7;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: url('https://images.unsplash.com/photo-1501131351550-efcccd531ea4') no-repeat center center fixed;
+            background-size: cover;
+            color: #fff;
+            padding: 0;
         }
         header {
-            background-color: #4CAF50;
-            color: white;
-            padding: 1rem 0;
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 2rem 1rem;
             text-align: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+        }
+        header h1 {
+            font-size: 2.5rem;
+            color: #fff;
+            font-weight: 700;
+        }
+        header p {
+            color: #ddd;
+            font-size: 1.2rem;
+            margin-top: 0.5rem;
         }
         .container {
             width: 90%;
-            margin: 2rem auto;
-            background-color: white;
+            max-width: 1200px;
+            margin: 3rem auto;
+            background-color: rgba(0, 0, 0, 0.6);
             padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        h1 {
-            text-align: center;
-            color: #333;
+            border-radius: 12px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.5);
         }
         h2 {
+            text-align: center;
             margin-top: 2rem;
-            color: #333;
+            color: #f7f7f7;
+            font-size: 1.8rem;
         }
         .match, .news-item {
-            background-color: #fff;
-            padding: 1rem;
-            margin-bottom: 1rem;
-            border-radius: 5px;
-            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            transition: background-color 0.3s ease;
+        }
+        .match:hover, .news-item:hover {
+            background-color: rgba(255, 255, 255, 0.15);
         }
         .match h3, .news-item h3 {
-            color: #333;
+            color: #f7f7f7;
+            font-size: 1.5rem;
+            font-weight: 600;
         }
         .match p, .news-item p {
-            color: #777;
+            color: #ddd;
+            font-size: 1rem;
         }
-        .match .date {
+        .date {
             font-weight: bold;
-            color: #333;
+            color: #fff;
         }
         .btn {
-            padding: 0.5rem 1rem;
+            padding: 0.6rem 1.3rem;
             border: none;
-            border-radius: 5px;
+            border-radius: 8px;
             cursor: pointer;
             font-weight: bold;
             color: white;
             background-color: #4CAF50;
             margin-top: 1rem;
             display: inline-block;
+            transition: background 0.3s ease;
+        }
+        .btn:hover {
+            background-color: #45a049;
+        }
+        @media (max-width: 768px) {
+            .match, .news-item {
+                padding: 1rem;
+            }
+            .match h3, .news-item h3 {
+                font-size: 1.3rem;
+            }
         }
     </style>
 </head>
@@ -70,29 +101,32 @@
 
 <header>
     <h1>Cricket Updates</h1>
-    <p>Stay updated with the latest cricket matches and news!</p>
+    <p>Your source for the latest cricket news and match updates!</p>
 </header>
 
 <div class="container">
     <section>
-        <h2>Upcoming Matches</h2>
+        <h2>Upcoming Cricket Matches</h2>
 
         <div class="match">
-            <h3>India vs Australia</h3>
+            <h3>India vs Australia - ODI</h3>
             <p class="date">Date: 30th March 2025</p>
             <p>Venue: Melbourne Cricket Ground</p>
+            <p>Match time: 3:30 PM (Local Time)</p>
             <button class="btn">View Details</button>
         </div>
         <div class="match">
-            <h3>England vs New Zealand</h3>
+            <h3>England vs New Zealand - T20I</h3>
             <p class="date">Date: 1st April 2025</p>
             <p>Venue: Lord's Cricket Ground</p>
+            <p>Match time: 7:00 PM (Local Time)</p>
             <button class="btn">View Details</button>
         </div>
         <div class="match">
-            <h3>Pakistan vs South Africa</h3>
+            <h3>Pakistan vs South Africa - Test Match</h3>
             <p class="date">Date: 5th April 2025</p>
             <p>Venue: Sharjah Cricket Stadium</p>
+            <p>Match time: 10:00 AM (Local Time)</p>
             <button class="btn">View Details</button>
         </div>
     </section>
