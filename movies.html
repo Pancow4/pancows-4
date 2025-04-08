@@ -6,68 +6,121 @@
   <title>Movie Downloads - Pancow Supermarket</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
       margin: 0;
-      padding: 0;
-      background-color: #f7f7f7;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: url('https://wallpapercave.com/wp/wp7151685.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: #fff;
     }
+
     header {
-      background-color: #4CAF50;
-      color: white;
+      background-color: rgba(0, 0, 0, 0.8);
+      color: #fff;
       text-align: center;
-      padding: 1.5rem 0;
+      padding: 2rem 1rem;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.3);
     }
+
+    header h1 {
+      font-size: 2.3rem;
+      margin: 0;
+    }
+
+    header p {
+      margin-top: 0.5rem;
+      font-size: 1rem;
+      color: #ccc;
+    }
+
     .container {
-      width: 90%;
+      max-width: 1200px;
       margin: 2rem auto;
+      padding: 0 1rem;
     }
+
     .movie-grid {
       display: flex;
       flex-wrap: wrap;
-      gap: 1rem;
+      gap: 2rem;
       justify-content: center;
     }
+
     .movie {
-      flex: 1 1 300px;
-      max-width: 300px;
-      background-color: white;
+      background-color: rgba(0, 0, 0, 0.7);
+      border-radius: 12px;
       padding: 1rem;
-      border-radius: 5px;
-      box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-      text-align: center;
+      width: 280px;
+      max-width: 90vw;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+      transition: transform 0.3s ease;
     }
+
+    .movie:hover {
+      transform: translateY(-10px);
+    }
+
     .movie img {
       width: 100%;
-      height: 400px;
+      height: auto;
+      max-height: 400px;
       object-fit: cover;
-      border-radius: 5px;
+      border-radius: 10px;
+      margin-bottom: 1rem;
     }
+
     .movie h3 {
-      margin-top: 0.5rem;
-      color: #333;
+      margin: 0.5rem 0;
+      font-size: 1.1rem;
+      color: #fff;
     }
+
     .movie p {
-      color: #777;
+      color: #aaa;
+      font-size: 0.9rem;
     }
+
     .btn {
-      padding: 0.5rem 1rem;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      font-weight: bold;
+      background-color: #e50914;
       color: white;
-      background-color: #4CAF50;
+      padding: 0.6rem 1.2rem;
       text-decoration: none;
+      border-radius: 6px;
       display: inline-block;
-      margin-top: 0.5rem;
+      font-weight: bold;
+      font-size: 0.95rem;
+      margin-top: 0.6rem;
+      transition: background 0.3s;
+    }
+
+    .btn:hover {
+      background-color: #ff1e22;
+    }
+
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 1.8rem;
+      }
+
+      .movie {
+        padding: 0.8rem;
+      }
+
+      .movie img {
+        max-height: 300px;
+      }
+
+      .btn {
+        font-size: 0.9rem;
+        padding: 0.5rem 1rem;
+      }
     }
   </style>
 </head>
 <body>
 
   <header>
-    <h1>Movie Downloads</h1>
-    <p>Download your favorite movies from external sites.</p>
+    <h1>🎬 Movie Downloads</h1>
+    <p>Get your favorite movies from trusted sources</p>
   </header>
 
   <div class="container">
