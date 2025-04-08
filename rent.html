@@ -1,105 +1,156 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rent a Car - Pancow Supermarket</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f7f7f7;
-        }
-        header {
-            background-color: #4CAF50;
-            color: white;
-            padding: 1rem 0;
-            text-align: center;
-        }
-        .container {
-            width: 90%;
-            margin: 2rem auto;
-            background-color: white;
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        h1 {
-            text-align: center;
-            color: #333;
-        }
-        .car-options {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-            margin-top: 2rem;
-        }
-        .car {
-            flex: 1 1 calc(33% - 1rem);
-            background-color: white;
-            padding: 1rem;
-            border-radius: 5px;
-            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-            text-align: center;
-        }
-        .car img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            border-radius: 5px;
-        }
-        .car h3 {
-            margin-top: 1rem;
-            color: #333;
-        }
-        .car p {
-            color: #777;
-        }
-        .btn {
-            padding: 0.5rem 1rem;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-weight: bold;
-            color: white;
-            background-color: #4CAF50;
-            margin-top: 1rem;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Book a Car - Pancow Supermarket</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: url('https://images.unsplash.com/photo-1503376780353-7e6692767b70') no-repeat center center fixed;
+      background-size: cover;
+      color: #fff;
+    }
+
+    header {
+      background-color: rgba(0, 0, 0, 0.7);
+      padding: 2rem 1rem;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      color: #fff;
+    }
+
+    header p {
+      color: #ccc;
+      font-size: 1rem;
+      margin-top: 0.5rem;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 2rem auto;
+      background-color: rgba(0, 0, 0, 0.6);
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.5);
+    }
+
+    .car-options {
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .car {
+      flex: 1 1 300px;
+      background-color: rgba(255, 255, 255, 0.1);
+      padding: 1rem;
+      border-radius: 10px;
+      text-align: center;
+      transition: transform 0.3s ease, background 0.3s;
+      box-shadow: 0 0 12px rgba(0,0,0,0.3);
+    }
+
+    .car:hover {
+      transform: translateY(-8px);
+      background-color: rgba(255, 255, 255, 0.15);
+    }
+
+    .car img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+
+    .car h3 {
+      margin-top: 1rem;
+      color: #fff;
+      font-size: 1.3rem;
+    }
+
+    .car p {
+      color: #ddd;
+      font-size: 1rem;
+    }
+
+    .btn {
+      margin-top: 1rem;
+      padding: 0.6rem 1.2rem;
+      font-size: 1rem;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .btn:hover {
+      background-color: #45a049;
+    }
+
+    @media (max-width: 768px) {
+      .car {
+        flex: 1 1 100%;
+      }
+
+      header h1 {
+        font-size: 2rem;
+      }
+
+      .btn {
+        font-size: 0.9rem;
+        padding: 0.5rem 1rem;
+      }
+    }
+  </style>
 </head>
 <body>
 
-<header>
-    <h1>Rent a Car Service</h1>
-    <p>Choose your car for the perfect ride!</p>
-</header>
+  <header>
+    <h1>Book a Car</h1>
+    <p>Your perfect ride is just a click away!</p>
+  </header>
 
-<div class="container">
+  <div class="container">
     <section class="car-options">
-        <div class="car">
-            <img src="sedan car.jpeg" alt="Sedan">
-            <h3>Sedan</h3>
-            <p>Rs. 2000 / day</p>
-            <button class="btn">Book Now</button>
-        </div>
-        <div class="car">
-            <img src="wragon.jpeg" alt="SUV">
-            <h3>wagon R </h3>
-            <p>Rs. 3500 / day</p>
-            <button class="btn">Book Now</button>
-        </div>
-        <div class="car">
-            <img src="alto.jpeg" alt="Luxury Car">
-            <h3>Alto</h3>
-            <p>Rs. 5000 / day</p>
-            <button class="btn">Book Now</button>
-        </div>
+
+      <div class="car">
+        <img src="https://cdn.pixabay.com/photo/2016/10/05/21/52/auto-1717036_1280.jpg" alt="Sedan">
+        <h3>Sedan</h3>
+        <p>Rs. 2000 / day</p>
+        <button class="btn">Book Now</button>
+      </div>
+
+      <div class="car">
+        <img src="https://cdn.pixabay.com/photo/2013/07/13/13/41/car-160361_1280.png" alt="Wagon R">
+        <h3>Wagon R</h3>
+        <p>Rs. 3500 / day</p>
+        <button class="btn">Book Now</button>
+      </div>
+
+      <div class="car">
+        <img src="https://cdn.pixabay.com/photo/2017/03/02/20/57/suzuki-2117210_1280.jpg" alt="Alto">
+        <h3>Alto</h3>
+        <p>Rs. 5000 / day</p>
+        <button class="btn">Book Now</button>
+      </div>
+
     </section>
-</div>
+  </div>
 
 </body>
 </html>
