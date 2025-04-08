@@ -14,64 +14,109 @@
         }
         body {
             background-color: #f7f7f7;
+            color: #333;
         }
         header {
             background-color: #4CAF50;
             color: white;
-            padding: 1rem;
+            padding: 2rem 1rem;
             text-align: center;
+            border-bottom: 5px solid #333;
+        }
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        header p {
+            font-size: 1.2rem;
+        }
+        .hero {
+            background-image: url('supermarket-banner.jpg'); /* Custom image */
+            background-size: cover;
+            background-position: center;
+            height: 350px;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 2rem;
+            font-weight: 700;
+        }
+        .hero h2 {
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 1rem 2rem;
+            border-radius: 5px;
         }
         .container {
             width: 90%;
-            margin: 0 auto;
-            padding: 1rem 0;
+            max-width: 1200px;
+            margin: 3rem auto;
+            padding: 2rem;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
         }
-        .hero {
-            background-image: url("dot.png");
-            background-size: cover;
-            background-position: center;
-            height: 250px;
-        }
-        .categories, .services {
-            margin: 1.5rem 0;
-        }
-        .categories h2, .services h2 {
-            margin-bottom: 1rem;
+        h2 {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: #4CAF50;
         }
         .categories-grid, .services-grid {
             display: flex;
-            gap: 1rem;
+            gap: 2rem;
             flex-wrap: wrap;
             justify-content: center;
         }
         .category, .service {
-            flex: 1 1 calc(50% - 1rem); /* Adjust for mobile screens */
+            flex: 1 1 calc(25% - 2rem);
             background-color: white;
-            padding: 1rem;
-            border-radius: 5px;
-            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             text-align: center;
+            transition: transform 0.3s ease;
+        }
+        .category:hover, .service:hover {
+            transform: scale(1.05);
         }
         .category img, .service img {
             width: 100%;
             height: auto;
-            max-height: 150px;
             object-fit: cover;
             border-radius: 5px;
+        }
+        .category h3, .service h3 {
+            margin-top: 1rem;
+            font-size: 1.2rem;
+        }
+        .category a, .service a {
+            text-decoration: none;
+            color: #4CAF50;
+            font-weight: bold;
         }
         footer {
             background-color: #333;
             color: white;
             text-align: center;
-            padding: 1rem 0;
-            margin-top: 2rem;
+            padding: 1.5rem;
+            margin-top: 3rem;
         }
-        @media (max-width: 600px) {
-            .hero {
-                height: 200px;
-            }
+        @media (max-width: 768px) {
             .category, .service {
-                flex: 1 1 100%; /* Full width for smaller screens */
+                flex: 1 1 calc(50% - 1rem);
+            }
+        }
+        @media (max-width: 480px) {
+            .category, .service {
+                flex: 1 1 100%;
+            }
+            .hero {
+                height: 250px;
+            }
+            .hero h2 {
+                font-size: 1.5rem;
             }
         }
     </style>
@@ -79,60 +124,53 @@
 <body>
 
 <header>
-    <h1>It's Pancow time :) Enjoy!!!</h1>
-    <p>Your one-stop shop for everything you need!</p>
+    <h1>Welcome to Pancow Supermarket</h1>
+    <p>Your one-stop shop for all your needs!</p>
 </header>
 
-<section class="hero"></section>
+<section class="hero">
+    <h2>Fresh Products, Best Prices - Always!</h2>
+</section>
 
 <div class="container">
-    <h1>Welcome to Pancow Supermarket</h1>
-    <p>Fresh, quality products at your fingertips.</p>
-
-    <!-- Categories Section -->
-    <section class="categories">
-        <h2>Shop by Category</h2>
-        <div class="categories-grid">
-            <div class="category">
-                <img src="F and B.jpeg" alt="Fruits & Vegetables">
-                <h3><a href="fruit.html">Fruits & Vegetables</a></h3>
-            </div>
-            <div class="category">
-                <img src="dairy.jpeg" alt="Dairy Products">
-                <h3><a href="dairies.html">Dairy Products</a></h3>
-            </div>
-            <div class="category">
-                <img src="fish and meat.jpeg" alt="Meat & Fish">
-                <h3><a href="Fish and meat.html">Meat & Fish</a></h3>
-            </div>
-            <div class="category">
-                <img src="house hold.jpeg" alt="Household Supplies">
-                <h3><a href="house hold things.html">Household Supplies</a></h3>
-            </div>
+    <h2>Shop by Category</h2>
+    <div class="categories-grid">
+        <div class="category">
+            <img src="F_and_B.jpeg" alt="Fruits & Vegetables">
+            <h3><a href="fruit.html">Fruits & Vegetables</a></h3>
         </div>
-    </section>
-
-    <!-- Other Services Section -->
-    <section class="services">
-        <h2>Other Services</h2>
-        <div class="services-grid">
-            <div class="service">
-                <img src="Movies1.png" alt="Movies">
-                <h3><a href="movies.html">Watch Movies</a></h3>
-                <p>Stream your favorite movies online.</p>
-            </div>
-            <div class="service">
-                <img src="Rent1.png" alt="Rent a Car">
-                <h3><a href="rent.html">Book a car</a></h3>
-                <p>Rent a car with ease for your trips.</p>
-            </div>
-            <div class="service">
-                <img src="cric.jpg" alt="Cricket Updates">
-                <h3><a href="cricket.html">Cricket Updates</a></h3>
-                <p>Stay updated with live cricket scores.</p>
-            </div>
+        <div class="category">
+            <img src="dairy.jpeg" alt="Dairy Products">
+            <h3><a href="dairies.html">Dairy Products</a></h3>
         </div>
-    </section>
+        <div class="category">
+            <img src="fish_and_meat.jpeg" alt="Meat & Fish">
+            <h3><a href="Fish_and_meat.html">Meat & Fish</a></h3>
+        </div>
+        <div class="category">
+            <img src="house_hold.jpeg" alt="Household Supplies">
+            <h3><a href="house_hold_things.html">Household Supplies</a></h3>
+        </div>
+    </div>
+
+    <h2>Our Services</h2>
+    <div class="services-grid">
+        <div class="service">
+            <img src="Movies1.png" alt="Movies">
+            <h3><a href="movies.html">Watch Movies</a></h3>
+            <p>Stream your favorite movies online.</p>
+        </div>
+        <div class="service">
+            <img src="Rent1.png" alt="Rent a Car">
+            <h3><a href="rent.html">Book a Car</a></h3>
+            <p>Rent a car with ease for your trips.</p>
+        </div>
+        <div class="service">
+            <img src="cric.jpg" alt="Cricket Updates">
+            <h3><a href="cricket.html">Cricket Updates</a></h3>
+            <p>Stay updated with live cricket scores.</p>
+        </div>
+    </div>
 </div>
 
 <footer>
