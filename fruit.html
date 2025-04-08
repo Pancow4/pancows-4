@@ -6,83 +6,120 @@
     <title>Fruits and Vegetables - Pancow Market</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Roboto', sans-serif;
             margin: 0;
             padding: 0;
             background-color: #f7f7f7;
+            color: #333;
         }
         header {
             background-color: #4CAF50;
             color: white;
             text-align: center;
-            padding: 1.5rem 0;
+            padding: 2rem 0;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
+        header h1 {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+            letter-spacing: 1px;
+        }
+        header p {
+            font-size: 1.2rem;
+        }
+
         .container {
             width: 90%;
             margin: 2rem auto;
         }
-        h1 {
-            text-align: center;
-            color: #333;
-        }
+
         .products-grid {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.5rem;
             margin-top: 2rem;
         }
+
         .product {
-            flex: 1 1 calc(25% - 1rem);
             background-color: white;
-            padding: 1rem;
-            border-radius: 5px;
-            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
             text-align: center;
+            transition: transform 0.3s ease;
         }
+        .product:hover {
+            transform: translateY(-5px);
+        }
+
         .product img {
-            width: 150px;
+            width: 100%;
             height: 150px;
             object-fit: cover;
-            border-radius: 5px;
+            border-radius: 8px;
         }
+
         .product h3 {
-            margin-top: 0.5rem;
+            margin-top: 1rem;
+            font-size: 1.5rem;
             color: #333;
         }
+
         .product p {
             color: #777;
+            margin-top: 0.5rem;
+            font-size: 1.1rem;
         }
+
         .product-actions {
-            margin-top: 1rem;
+            margin-top: 1.5rem;
             display: flex;
-            gap: 0.5rem;
+            gap: 0.7rem;
             justify-content: center;
         }
+
         .btn {
-            padding: 0.5rem 1rem;
+            padding: 0.8rem 1.5rem;
             border: none;
             border-radius: 5px;
             cursor: pointer;
             font-weight: bold;
             color: white;
+            transition: background-color 0.3s ease;
         }
+
         .add-to-cart {
             background-color: #4CAF50;
         }
+        .add-to-cart:hover {
+            background-color: #45a049;
+        }
+
         .buy-now {
             background-color: #FF5733;
         }
+        .buy-now:hover {
+            background-color: #e04e2c;
+        }
+
         .view-cart {
             display: block;
             width: max-content;
-            margin: 2rem auto;
-            padding: 0.7rem 1.5rem;
+            margin: 3rem auto;
+            padding: 0.7rem 2rem;
             background-color: #333;
             color: white;
             text-decoration: none;
             font-weight: bold;
             border-radius: 5px;
+            text-align: center;
+            transition: background-color 0.3s ease;
         }
+
+        .view-cart:hover {
+            background-color: #444;
+        }
+
     </style>
 </head>
 <body>
