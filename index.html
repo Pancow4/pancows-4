@@ -32,28 +32,29 @@
             font-size: 1.1rem;
         }
 
-        /* Hero banner with black background and white text */
+        /* Hero banner with cinematic background */
         .hero {
-            background-image: url('baner.png'); /* Add the background image here */
+            background-image: baner.jpg; /* Replace with a high-quality supermarket image */
             background-size: cover;
             background-position: center;
             color: white;
             text-align: center;
-            padding: 1.5rem 1rem; /* Adjusted padding for smaller banner */
-            height: 250px; /* Made the banner height smaller */
+            padding: 3rem 1rem;
+            height: 350px; /* Adjusted height for better visibility */
             display: flex;
             justify-content: center;
-            align-items: flex-start; /* Align the text to the top */
-            font-size: 1.8rem;
+            align-items: center;
+            font-size: 2rem;
             font-weight: bold;
             position: relative;
+            filter: brightness(60%); /* Darkens the image slightly for better text contrast */
         }
 
         .hero h2 {
             background-color: rgba(0, 0, 0, 0.6); /* Darker background for readability */
             padding: 1rem 2rem;
             border-radius: 8px;
-            margin-top: 20px; /* Add some spacing at the top */
+            margin-top: 20px;
         }
 
         /* Main container */
@@ -128,7 +129,9 @@
     <p>Your one-stop shop for all your needs!</p>
 </header>
 
-
+<section class="hero">
+    <h2>Fresh Products, Best Prices - Always!</h2>
+</section>
 
 <div class="container">
     <h2>Shop by Category</h2>
@@ -172,7 +175,7 @@
 </div>
 
 <footer>
-    <p>&copy; 2025 Pankow Supermarket. All rights reserved.</p>
+    <p>&copy; 2025 Pancow Supermarket. All rights reserved.</p>
 </footer>
 
 </body>
