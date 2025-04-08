@@ -32,6 +32,30 @@
             font-size: 1.1rem;
         }
 
+        /* Hero banner with black background and white text */
+        .hero {
+            background-image: url('baner.png'); /* Add the background image here */
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 1.5rem 1rem; /* Adjusted padding for smaller banner */
+            height: 250px; /* Made the banner height smaller */
+            display: flex;
+            justify-content: center;
+            align-items: flex-start; /* Align the text to the top */
+            font-size: 1.8rem;
+            font-weight: bold;
+            position: relative;
+        }
+
+        .hero h2 {
+            background-color: rgba(0, 0, 0, 0.6); /* Darker background for readability */
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            margin-top: 20px; /* Add some spacing at the top */
+        }
+
         /* Main container */
         .container {
             width: 90%;
@@ -104,7 +128,10 @@
     <p>Your one-stop shop for all your needs!</p>
 </header>
 
-<!-- Removed the Hero Section (Fresh Products, Best Prices - Always!) -->
+<!-- Hero Section with just the background image and no text -->
+<section class="hero">
+    <!-- No text here -->
+</section>
 
 <div class="container">
     <h2>Shop by Category</h2>
