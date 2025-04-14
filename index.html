@@ -1,24 +1,170 @@
-<div class="services-grid">
-    <div class="service">
-        <img src="Movies1.png" alt="Movies">
-        <h3><a href="movies.html">Watch Movies</a></h3>
-        <p>Stream your favorite movies online.</p>
-    </div>
-    <div class="service">
-        <img src="Rent1.png" alt="Rent a Car">
-        <h3><a href="rent.html">Book a Car</a></h3>
-        <p>Rent a car with ease for your trips.</p>
-    </div>
-    <div class="service">
-        <img src="cric.jpg" alt="Cricket Updates">
-        <h3><a href="cricket.html">Cricket Updates</a></h3>
-        <p>Stay updated with live cricket scores.</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pankow Supermarket</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Roboto', sans-serif;
+        }
+        body {
+            background-color: #f4f4f9;
+            color: #333;
+        }
+        header {
+            background-color: #28a745;
+            color: white;
+            padding: 1.5rem 1rem;
+            text-align: center;
+            border-bottom: 4px solid #1c7c31;
+        }
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            letter-spacing: 1px;
+        }
+        header p {
+            font-size: 1.1rem;
+        }
+        .hero {
+            background-image: url('baner.png');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 1.5rem 1rem;
+            height: 250px;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            font-size: 1.8rem;
+            font-weight: bold;
+            position: relative;
+        }
+        .hero h2 {
+            background-color: rgba(0, 0, 0, 0.6);
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: #28a745;
+        }
+        .categories-grid, .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.5rem;
+            justify-items: center;
+        }
+        .category, .service {
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        .category:hover, .service:hover {
+            transform: scale(1.05);
+        }
+        .category img, .service img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+        .category h3, .service h3 {
+            margin-top: 1rem;
+            font-size: 1.2rem;
+        }
+        .category a, .service a {
+            text-decoration: none;
+            color: #28a745;
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 1.5rem;
+            margin-top: 3rem;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Its Pankow time enjoy:)</h1>
+    <p>Your one-stop shop for all your needs!</p>
+</header>
+
+<section class="hero"></section>
+
+<div class="container">
+    <h2>Shop by Category</h2>
+    <div class="categories-grid">
+        <div class="category">
+            <img src="F and B.jpeg" alt="Fruits & Vegetables">
+            <h3><a href="fruit.html">Fruits & Vegetables</a></h3>
+        </div>
+        <div class="category">
+            <img src="dairy.jpeg" alt="Dairy Products">
+            <h3><a href="dairies.html">Dairy Products</a></h3>
+        </div>
+        <div class="category">
+            <img src="fish and meat.jpeg" alt="Meat & Fish">
+            <h3><a href="Fish and meat.html">Meat & Fish</a></h3>
+        </div>
+        <div class="category">
+            <img src="house hold.jpeg" alt="Household Supplies">
+            <h3><a href="house hold things.html">Household Supplies</a></h3>
+        </div>
     </div>
 
-    <!-- 🎮 New Game Section -->
-    <div class="service">
-        <img src="game-thumbnail.jpg" alt="Play Game">
-        <h3><a href="game.html">Play Game</a></h3>
-        <p>Enjoy our new fun 2D game online!</p>
+    <h2>Our Services</h2>
+    <div class="services-grid">
+        <div class="service">
+            <img src="Movies1.png" alt="Movies">
+            <h3><a href="movies.html">Watch Movies</a></h3>
+            <p>Stream your favorite movies online.</p>
+        </div>
+        <div class="service">
+            <img src="Rent1.png" alt="Rent a Car">
+            <h3><a href="rent.html">Book a Car</a></h3>
+            <p>Rent a car with ease for your trips.</p>
+        </div>
+        <div class="service">
+            <img src="cric.jpg" alt="Cricket Updates">
+            <h3><a href="cricket.html">Cricket Updates</a></h3>
+            <p>Stay updated with live cricket scores.</p>
+        </div>
+        <!-- 🎮 Game Section -->
+        <div class="service">
+            <img src="game-thumbnail.jpg" alt="Play Game">
+            <h3><a href="game.html">Play Game</a></h3>
+            <p>Enjoy our new fun 2D game online!</p>
+        </div>
     </div>
 </div>
+
+<footer>
+    <p>&copy; 2025 Pankow Supermarket. All rights reserved.</p>
+</footer>
+
+</body>
+</html>
