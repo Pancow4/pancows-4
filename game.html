@@ -2,59 +2,58 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Pankow Games</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
-      background: #f0f0f0;
-      margin: 0;
-      padding: 30px;
-      text-align: center;
+      font-family: 'Arial', sans-serif;
+      background-color: #f4f4f9;
+      color: #333;
+      padding: 2rem;
     }
-
-    .game-card {
-      background-color: #fff;
+    h1 {
+      text-align: center;
+      color: #28a745;
+      margin-bottom: 2rem;
+    }
+    .game-container {
+      max-width: 800px;
+      margin: 0 auto;
+      background: #fff;
+      padding: 1rem;
       border-radius: 10px;
       box-shadow: 0 0 10px rgba(0,0,0,0.1);
-      padding: 20px;
-      display: inline-block;
-      max-width: 400px;
+      text-align: center;
     }
-
-    .game-card img {
+    .game-thumbnail {
       width: 100%;
+      max-width: 400px;
       border-radius: 10px;
+      margin-bottom: 1rem;
     }
-
-    .game-card h2 {
-      margin-top: 15px;
-    }
-
     .play-btn {
-      margin-top: 15px;
-      padding: 10px 20px;
-      background-color: #007bff;
+      display: inline-block;
+      padding: 0.8rem 1.5rem;
+      background-color: #28a745;
       color: white;
       border: none;
       border-radius: 8px;
-      font-size: 16px;
       text-decoration: none;
+      font-weight: bold;
     }
-
     .play-btn:hover {
-      background-color: #0056b3;
+      background-color: #218838;
     }
   </style>
 </head>
 <body>
 
-  <h1>Welcome to Pankow Game Zone 🎮</h1>
-
-  <div class="game-card">
-    <img src="game-thumbnail.jpg" alt="Game Thumbnail">
-    <h2>Cool 2D Game</h2>
-    <p>Play our newest 2D adventure game. Made with Python just for fun!</p>
-    <a class="play-btn" href="zombie game/index.html" target="_blank">Play Now</a>
+  <h1>🎮 Play Our Game</h1>
+  <div class="game-container">
+    <img src="game-thumbnail.jpg" alt="Game Thumbnail" class="game-thumbnail">
+    <h2>Pankow's 2D Mini Game</h2>
+    <p>Click below to play our fun new game made with love!</p>
+    <a href="zombie game/index.html" class="play-btn">Play Now</a>
   </div>
 
 </body>
