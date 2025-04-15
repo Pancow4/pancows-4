@@ -73,13 +73,13 @@ if (walkImage==11) {walkImage=1;}
    function attack() {
       attackWorker= setInterval(()=> {
          attackImage++
-         if (attackImage == 10) {
+         if (attackImage == 11) {
             attackImage =1 ;
    
             clearInterval(attackWorker);
             attackWorker =0 ;
          }
-         document.getElementById("12").src = "Attack" +attackImage+".png"; 
+         document.getElementById("12").src =  "Attack" +attackImage+".png"; 
       }, 100)
       if (attackCount==5) {
          alert ("You won fucker");
