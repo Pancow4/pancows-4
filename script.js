@@ -42,7 +42,7 @@ if (walkImage==11) {walkImage=1;}
   var runWorker= 0;
   var knightMarginLeft=80;
   var isRun = false;
-  var runSound = new Audio("Run.mp3");
+  var runSound = new Audio("run.mp3");
   runSound.loop =true;
    function run() {
       isRun = true ;
