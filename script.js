@@ -42,7 +42,7 @@ if (walkImage==11) {walkImage=1;}
   var runWorker= 0;
   var knightMarginLeft=80;
   var isRun = false;
-  var runSound = new Audio("run.mp3");
+  var runSound = new Audio("Run.mp3");
   runSound.loop =true;
    function run() {
       isRun = true ;
@@ -75,11 +75,10 @@ if (walkImage==11) {walkImage=1;}
          attackImage++
          if (attackImage == 11) {
             attackImage =1 ;
-   
             clearInterval(attackWorker);
             attackWorker =0 ;
          }
-         document.getElementById("12").src =  "Attack" +attackImage+".png"; 
+         document.getElementById("12").src = "Attack"+ attackImage+".png"; 
       }, 100)
       if (attackCount==5) {
          alert ("You won fucker");
@@ -87,3 +86,4 @@ if (walkImage==11) {walkImage=1;}
       }
       attackCount++
    }
+      
