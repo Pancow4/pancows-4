@@ -73,8 +73,9 @@ if (walkImage==11) {walkImage=1;}
    function attack() {
       attackWorker= setInterval(()=> {
          attackImage++
-         if (attackImage == 11) {
+         if (attackImage == 10) {
             attackImage =1 ;
+   
             clearInterval(attackWorker);
             attackWorker =0 ;
          }
