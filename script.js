@@ -79,7 +79,7 @@ if (walkImage==11) {walkImage=1;}
             attackWorker =0 ;
          }
          document.getElementById("12").src = "Attack"+attackImage+ ".png"; 
-      }, 100)
+      }, 150)
       if (attackCount==5) {
          alert ("You won fucker");
          window.location.reload();
