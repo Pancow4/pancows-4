@@ -16,13 +16,13 @@ position: absolute;
 
 }.knight {
  height:200px ;
- margin-top: 360px;
+ margin-top: 340px;
  margin-left:80;
  position: absolute;
 
 } .zombie {
  height: 200px;
- margin-top:360px;
+ margin-top:340px;
  margin-left:1100px ;
  position: absolute;
  transform: scaleX(-1);
@@ -37,3 +37,4 @@ font-weight:bold ;
 margin-top: 40px;
 margin-left:550px ;
 position: absolute;
+}
