@@ -78,7 +78,7 @@ if (walkImage==11) {walkImage=1;}
       clearInterval(attackWorker);
       attackWorker = 0;
     }
-    document.getElementById("12").src = "Attack1" + attackImage + ".png";
+    document.getElementById("12").src = "Attack" + attackImage + ".png";
   }, 150);
 
   // 🔥 Add this part:
