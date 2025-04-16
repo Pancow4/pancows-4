@@ -86,6 +86,7 @@ function attack() {
   }, 150);
 
   attackCount++;
+  console.log("Attack count is now: " + attackCount); // 🔍 Debug log
   document.getElementById("shots").innerHTML = "Shots Fired: " + attackCount;
 
   if (attackCount == 4) {
@@ -93,4 +94,3 @@ function attack() {
     window.location.reload();
   }
 }
-      
