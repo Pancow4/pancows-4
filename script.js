@@ -74,20 +74,23 @@ var attackImage = 1;
 var attackWorker = 0;
 var attackCount = 0;
 var attackSound = new Audio("attack.mp3");
- function attack() {
-      attackWorker= setInterval(()=> {
-         attackImage++
-         if (attackImage == 11) {
-            attackImage =1 ;
-            clearInterval(attackWorker);
-            attackWorker =0 ;
-         }
-         document.getElementById("12").src = "Attack"+ attackImage+".png"; 
-      }, 100)
-      if (attackCount==5) {
-         alert ("You won fucker");
-         window.location.reload();
-      }
-      attackCount++
-   }
+function attack() {
+  attackWorker = setInterval(() => {
+    attackImage++;
+    if (attackImage == 11) {
+      attackImage = 1;
+      clearInterval(attackWorker);
+      attackWorker = 0;
+    }
+    document.getElementById("12").src = "Attack" + attackImage + ".png";
+  }, 150);
+
+  attackCount++;
+  document.getElementById("shots").innerHTML = "Shots Fired: " + attackCount;
+
+  if (attackCount == 4) {
+    alert("You won!");
+    window.location.reload();
+  }
+}
       
