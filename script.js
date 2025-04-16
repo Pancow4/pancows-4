@@ -70,26 +70,26 @@ function run() {
   }, 150);
 }
 
-var attackImage = 1;
+var Attack = 1;
 var attackWorker = 0;
 var attackCount = 0;
 var attackSound = new Audio("attack.mp3");
 function attack() {
   attackWorker = setInterval(() => {
-    attackImage++;
-    if (attackImage == 11) {
-      attackImage = 1;
+    Attack++;
+    if (Attack == 11) {
+      Attack = 1;
       clearInterval(attackWorker);
       attackWorker = 0;
     }
-    document.getElementById("12").src = "Attack" + attackImage + ".png";
+    document.getElementById("12").src = "Attack" + Attack + ".png";
   }, 150);
 
   attackCount++;
   console.log("Attack count is now: " + attackCount); // 🔍 Debug log
   document.getElementById("shots").innerHTML = "Shots Fired: " + attackCount;
 
-  if (attackCount == 4) {
+  if (attackCount == 5) {
     alert("You won!");
     window.location.reload();
   }
