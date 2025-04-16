@@ -70,19 +70,19 @@ function run() {
   }, 150);
 }
 
-var Attack = 1;
+var attackImage = 1;
 var attackWorker = 0;
 var attackCount = 0;
 var attackSound = new Audio("attack.mp3");
 function attack() {
   attackWorker = setInterval(() => {
-    Attack++;
-    if (Attack == 11) {
-      Attack = 1;
+   attackImage++;
+    if (attackImage == 11) {
+     attackImage = 1;
       clearInterval(attackWorker);
       attackWorker = 0;
     }
-    document.getElementById("12").src = "Attack" + Attack + ".png";
+    document.getElementById("12").src = "Attack" + attackImage + ".png";
   }, 150);
 
   attackCount++;
